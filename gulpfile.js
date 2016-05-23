@@ -5,6 +5,7 @@ require('./tasks/typescript.task');
 require('./tasks/vendor.task');
 require('./tasks/views.task');
 require('./tasks/tests.task');
+require('./tasks/setup.task');
 require('./tasks/sass.task');
 
 gulp.task('default', [
