@@ -5,7 +5,7 @@ const del = require('del');
 const path = require('path');
 
 gulp.task('sass', () => {
-    del(['public/app/**/*.css', 'public/app/main.css']);
+    del(['public/app/**/*.css', 'public/app/globals.css']);
 
     // Do the main file separately and move to public/assets/
     gulp.src(config.src.sass.globals)
