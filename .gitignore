@@ -2,5 +2,8 @@
 /vendor
 /node_modules
 
+/public/assets
+/public/app
+
 .env
 npm-debug.log
