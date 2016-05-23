@@ -3,7 +3,7 @@ const browserSync = require('browser-sync').create();
 
 gulp.task('browser-sync', () => {
     browserSync.init({
-        proxy: 'http://angular.app:8000',
+        proxy: process.env.BROWSERSYNC_PROXY_URL || 'http://localhost:8000',
         notify: false,
         inject: true,
         debounce: 2000

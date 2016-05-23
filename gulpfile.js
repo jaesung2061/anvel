@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const gulp = require('gulp');
 
 require('./tasks/browser-sync.task');
