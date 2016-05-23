@@ -1,0 +1,50 @@
+/* Global styles goes here. */
+
+$footerHeight: 100px;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Begin document layout */
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#navbar {
+    margin-bottom: 1rem;
+}
+
+.Page {
+    padding-bottom: $footerHeight;
+}
+
+#footer {
+    background-color: #eee;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $footerHeight;
+    line-height: $footerHeight;
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+/* End document layout */
+
+/* Begin NgForm styles*/
+label.form-group {
+    display: block;
+}
+
+.ng-valid[required] {
+    border-left: 5px solid #42A948;
+}
+
+.ng-invalid {
+    border-left: 5px solid #a94442;
+}
+/* End NgForm styles*/

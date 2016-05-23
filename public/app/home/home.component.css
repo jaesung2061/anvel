@@ -1,0 +1,18 @@
+.jumbotron {
+  margin-bottom: 0; }
+
+.section-1 {
+  margin: -1rem 0;
+  background-color: #fff;
+  background-image: url(https://blog.finit.co/img/cover.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50%;
+  width: 100%;
+  color: #eee; }
+
+.section-2 {
+  background-color: #fff; }
+
+.section-3 {
+  background-color: #6fbee2; }
