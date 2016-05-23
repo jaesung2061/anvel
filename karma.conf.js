@@ -1,5 +1,7 @@
 module.exports = (config) => {
-    const webpackConfig = require('./webpack.config');
+    const webpackConfig = Object.assign({}, require('./webpack.config'));
+
+    delete webpackConfig.output;
 
     config.set({
         basePath: '',
@@ -8,9 +10,7 @@ module.exports = (config) => {
             'karma-jasmine',
             'karma-webpack',
             'karma-mocha-reporter',
-            'karma-phantomjs-launcher',
-            'karma-sourcemap-loader',
-            'karma-coverage'
+            'karma-phantomjs-launcher'
         ],
 
         frameworks: ['jasmine'],
@@ -41,7 +41,7 @@ module.exports = (config) => {
         exclude: [],
 
         preprocessors: {
-            '**/*.ts': ['coverage', 'webpack', 'sourcemap']
+            '**/*.ts': ['webpack']
         },
 
         webpack: webpackConfig,
