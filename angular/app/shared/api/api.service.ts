@@ -73,10 +73,7 @@ export class Api {
      * @returns {Observable<Response>}
      */
     get(url: string, options?: any) {
-        let params = this.serialize({
-            test: 'test',
-            array: [ 'one', 'two', {'test': {test: [ 'test' ]}} ]
-        });
+        let params = this.serialize(options && options.body || {});
 
         options = new RequestOptions({
             url: '/api/users',
@@ -85,7 +82,10 @@ export class Api {
             search: params
         });
 
-        return this.http.request('/api/users', options);
+        return this.http
+            .get('/api/users', options)
+            .map(this.extractData)
+            .catch(this.catchError);
     }
 
     /**
@@ -106,7 +106,8 @@ export class Api {
 
         return this.http
             .post(this.getBuiltUrl(url), data, options)
-            .map(this.extractData);
+            .map(this.extractData)
+            .catch(this.catchError);
     }
 
     /**
@@ -127,7 +128,8 @@ export class Api {
 
         return this.http
             .put(this.getBuiltUrl(url), data, options)
-            .map(this.extractData);
+            .map(this.extractData)
+            .catch(this.catchError);
     }
 
     /**
@@ -143,7 +145,8 @@ export class Api {
 
         return this.http
             .delete(this.getBuiltUrl(url), options)
-            .map(this.extractData);
+            .map(this.extractData)
+            .catch(this.catchError);
     }
 
     /**
@@ -164,7 +167,8 @@ export class Api {
 
         return this.http
             .patch(this.getBuiltUrl(url), data, options)
-            .map(this.extractData);
+            .map(this.extractData)
+            .catch(this.catchError);
     }
 
     /**
