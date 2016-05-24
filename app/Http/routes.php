@@ -2,8 +2,7 @@
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['middleware' => 'cors'], function ($api)
-{
+$api->version('v1', ['middleware' => 'cors'], function ($api) {
     $api->resource('users', 'UsersController');
 
     $api->get('test', function () {
@@ -11,7 +10,6 @@ $api->version('v1', ['middleware' => 'cors'], function ($api)
     });
 });
 
-$app->get('{slug:.*}', function () use ($app)
-{
+$app->get('{slug:.*}', function () use ($app) {
     return view('index');
 });

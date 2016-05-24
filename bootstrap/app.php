@@ -80,11 +80,12 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+$app->configure('jwt');
 
 $app->register(Barryvdh\Cors\LumenServiceProvider::class);
 $app->configure('cors');
@@ -92,8 +93,7 @@ $app->configure('cors');
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
 // Do not give explicit error messages to client in production.
-if (env('APP_ENV') === 'local' || env('APP_ENV') === 'staging')
-{
+if (env('APP_ENV') === 'local' || env('APP_ENV') === 'staging') {
     $app[Dingo\Api\Exception\Handler::class]->setErrorFormat([
         'error' => [
             'message'     => ':message',
@@ -104,6 +104,10 @@ if (env('APP_ENV') === 'local' || env('APP_ENV') === 'staging')
         ]
     ]);
 }
+
+app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
+    return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -116,8 +120,7 @@ if (env('APP_ENV') === 'local' || env('APP_ENV') === 'staging')
 |
 */
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app)
-{
+$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../app/Http/routes.php';
 });
 
