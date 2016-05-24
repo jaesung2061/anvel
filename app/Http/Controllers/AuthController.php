@@ -2,21 +2,21 @@
 
 use Dingo\Api\Http\Request;
 use Dingo\Api\Routing\Helpers;
-use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\JWTAuth;
 
 /**
  * Class AuthenticationController
+ *
  * @package App\Http\Controllers
  */
 class AuthController extends Controller {
-    
+
     use Helpers;
 
     /**
      * @var JWTAuth
      */
-    private $auth;
+    protected $auth;
 
     /**
      * @param JWTAuth $auth
@@ -32,23 +32,27 @@ class AuthController extends Controller {
      */
     public function login(Request $request)
     {
-        // grab credentials from the request
         $credentials = $request->only('email', 'password');
 
-        try {
-            // attempt to verify the credentials and create a token for the user
-            $token = $this->auth->attempt($credentials);
-            if (!$token) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
-            }
-        } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
-            return response()->json(['error' => 'could_not_create_token'], 500);
+        if (!$token = $this->auth->attempt($credentials)) {
+            return response()->json(['error' => 'invalid_credentials'], 401);
         }
 
         $user = $this->auth->setToken($token)->toUser();
 
-        // all good so return the token
         return response()->json(['data' => compact('token', 'user')]);
+    }
+
+    /**
+     *
+     */
+    public function verify()
+    {
+        if (! $user = $this->auth->parseToken()->authenticate()) {
+            return response()->json(['user_not_found'], 404);
+        }
+
+        // the token is valid and we have found the user via the sub claim
+        return response()->json(compact('user'));
     }
 }

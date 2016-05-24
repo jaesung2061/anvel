@@ -111,6 +111,27 @@ app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
 
 /*
 |--------------------------------------------------------------------------
+| Handle Exceptions
+|--------------------------------------------------------------------------
+|
+| Register all custom exception handlers here. For more information
+| and documentation, please visit the following link.
+|
+| https://github.com/dingo/api/wiki/Errors-And-Error-Responses
+|
+*/
+app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+    return response()->json(['error' => 'token_expired'], $e->getCode() ?: 401);
+});
+app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\TokenInvalidException  $e) {
+    return response()->json(['error' => 'token_invalid'], $e->getCode() ?: 401);
+});
+app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+    return response()->json(['error' => 'token_absent'], $e->getCode() ?: 401);
+});
+
+/*
+|--------------------------------------------------------------------------
 | Load The Application Routes
 |--------------------------------------------------------------------------
 |
