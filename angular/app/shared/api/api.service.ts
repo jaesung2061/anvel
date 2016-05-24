@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions } from '@angular/http';
+import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -73,11 +73,19 @@ export class Api {
      * @returns {Observable<Response>}
      */
     get(url: string, options?: any) {
-        options = this.prepareApiRequest(options);
+        let params = this.serialize({
+            test: 'test',
+            array: [ 'one', 'two', {'test': {test: [ 'test' ]}} ]
+        });
 
-        return this.http
-            .get(this.getBuiltUrl(url), options)
-            .map(this.extractData);
+        options = new RequestOptions({
+            url: '/api/users',
+            method: 'GET',
+            headers: Object.assign(this.apiAcceptHeader, this.defaultHeahders),
+            search: params
+        });
+
+        return this.http.request('/api/users', options);
     }
 
     /**
@@ -175,18 +183,31 @@ export class Api {
             .map(this.extractData);
     }
 
+    /**
+     * Extract data
+     *
+     * @param response
+     * @returns {any|{}}
+     */
     private extractData(response: any) {
         let body = response.json();
 
-        return body.data || { };
+        return body.data || {};
     }
 
+    /**
+     * Catch response errors.
+     *
+     * @param error
+     * @returns {ErrorObservable}
+     */
     private catchError(error) {
-        // In a real world app, we might use a remote logging infrastructure
-        // We'd also dig deeper into the error to get a better message
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
+        let errMsg = (error.message)
+            ? error.message
+            : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+
+        console.error(errMsg);
+
         return Observable.throw(errMsg);
     }
 
@@ -220,5 +241,29 @@ export class Api {
         options.headers = options.headers || new Headers(headers);
 
         return options;
+    }
+
+    /**
+     * Resursively serialize an object/array.
+     *
+     * @param obj
+     * @param prefix
+     * @returns {URLSearchParams}
+     */
+    private serialize(obj: Object, prefix?: string): URLSearchParams {
+        let str = [];
+
+        for (let p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                let _prefix = prefix ? prefix + '[' + p + ']' : p, value = obj[ p ];
+
+                str.push(typeof value === 'object'
+                    ? this.serialize(value, _prefix)
+                    : encodeURIComponent(_prefix) + '=' + encodeURIComponent(value)
+                );
+            }
+        }
+
+        return new URLSearchParams(str.join('&'));
     }
 }
