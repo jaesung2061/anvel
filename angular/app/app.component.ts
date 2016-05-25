@@ -22,34 +22,5 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.api.get('users', {body: JSON.stringify({test: 'test'})})
-            .subscribe(
-                (response) => console.log(response),
-                (error) => console.log(error)
-            );
-
-        this.api.post('users', {name: 'jeff', email: 'jeff@yeon.com'})
-            .subscribe(
-                (response) => console.log(response),
-                (error) => console.log(error)
-            );
-
-        this.api.get('users/1', {body: JSON.stringify({name: 'jeff', email: 'jeff@yeon.com'})})
-            .subscribe(
-                (response) => console.log(response),
-                (error) => console.log(error)
-            );
-
-        this.api.put('users/1', {name: 'yo', test: 'test'})
-            .subscribe(
-                (response) => console.log(response),
-                (error) => console.log(error)
-            );
-
-        this.api.put('users/1', {name: 'yo', test: 'test'})
-            .subscribe(
-                (response) => console.log(response),
-                (error) => console.log(error)
-            );
     }
 }

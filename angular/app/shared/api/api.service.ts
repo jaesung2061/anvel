@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+import { Config } from '../config/config.service';
+
 @Injectable()
-export class Api {
+export class Api implements OnInit {
     apiAcceptHeader = {'Accept': 'application/vnd.myapp.v1+json'};
     defaultHeahders = {};
     baseUri = '/api/';
@@ -13,8 +15,25 @@ export class Api {
      * Only to be used for internal api (Lumen Dingo api).
      *
      * @param http
+     * @param config
      */
-    constructor(private http: Http) {
+    constructor(private http: Http,
+                private config: Config) {
+    }
+
+    /**
+     * 
+     */
+    ngOnInit() {
+        let headerValue = 'application/';
+
+        headerValue += this.config.getEnv('API_STANDARDS_TREE') + '.';
+        headerValue += this.config.getEnv('API_SUBTYPE') + '.';
+        headerValue += this.config.getEnv('API_VERSION') + '+json';
+
+        this.apiAcceptHeader = {
+            'Accept': headerValue
+        }
     }
 
     /**
