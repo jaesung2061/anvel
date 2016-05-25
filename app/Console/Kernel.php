@@ -12,8 +12,9 @@ class Kernel extends ConsoleKernel {
      * @var array
      */
     protected $commands = [
-        Commands\VendorPublishCommand::class,
-        Commands\CreateComponentCommand::class,
+        Commands\AngularGenerators\CreateComponentCommand::class,
+        Commands\AngularGenerators\CreateDirectiveCommand::class,
+        //
     ];
 
     /**

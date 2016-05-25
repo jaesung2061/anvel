@@ -1,12 +1,11 @@
-import { Component } from '{{ '@' }}angular/core';
+import { Component } from '{{ '@angular/core' }}';
 
-{{ '@' }}Component({
+{{ '@Component' }}({
     selector: 'avl-{{$name}}',
     templateUrl: '{{$templatePath}}',
-    styleUrls: ['{{$cssPath}}']
+    styleUrls: [ '{{$cssPath}}' ]
 })
 export class {{$upperCamelCaseName}}Component {
     constructor() {
-        //
     }
 }

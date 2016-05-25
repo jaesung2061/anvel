@@ -1,1 +1,0 @@
-/* {{ucfirst($name)}} */

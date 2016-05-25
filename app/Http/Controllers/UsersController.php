@@ -5,7 +5,19 @@ namespace App\Http\Controllers;
 use App\User;
 use Dingo\Api\Contract\Http\Request;
 
+/**
+ * @Resource("Users", uri="/api/users")
+ */
 class UsersController {
+    /**
+     * Show all users
+     *
+     * Get a JSON representation of all the registered users.
+     *
+     * @Get("/")
+     * @Versions({"v1"})
+     * @Response(200, body={"id": 10, "username": "foo"})
+     */
     public function index()
     {
         $users = User::limit(10)->get();

@@ -1,33 +1,28 @@
-<?php namespace App\Console\Commands;
+<?php
+
+namespace App\Console\Commands\AngularGenerators;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
-use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
-class CreateComponentCommand extends Command {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'ng2:component {name} {--path=}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create component files for Angular 2.';
+abstract class BaseGeneratorCommand extends Command
+{
     /**
      * @var Filesystem
      */
     protected $filesystem;
 
     /**
-     * Create a new command instance.
+     * @var string
+     */
+    protected $stubsPath = __DIR__.'/../../../../resources/stubs/';
+
+    /**
+     * BaseGeneratorCommand constructor.
      *
      * @param Filesystem $filesystem
      */
@@ -39,49 +34,22 @@ class CreateComponentCommand extends Command {
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        $this->validate();
-
-        $componentName = strtolower($this->argument('name'));
-        $targetDir = $this->getTargetDir($componentName);
-
-        $this->createTs($componentName, $targetDir.$componentName.'.component.ts');
-        $this->createHtml($componentName, $targetDir.$componentName.'.component.html');
-        $this->createScss($componentName, $targetDir.$componentName.'.component.scss');
-        $this->createSpec($componentName, $targetDir.$componentName.'.spec.ts');
-        $this->createIndex($componentName, $targetDir.'index.ts');
-    }
-
-    /**
-     * @throws Exception
-     */
-    protected function validate()
-    {
-        if (!preg_match('/^[a-z0-9-_]+$/i', $this->argument('name')))
-        {
-            throw new Exception;
-        }
-    }
-
-    /**
      * @param $name
+     * @param $type
      * @param $path
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @param array $options
+     * @throws Exception
+     * @throws FileNotFoundException
      */
-    protected function createTs($name, $path)
+    protected function createTs($name, $type, $path, $options = [])
     {
         // For use on component decorator to identify css and template path
         $cssPath = str_replace('angular/', '', str_replace('.ts', '.css', $this->normalize($path)));
         $templatePath = str_replace('angular/', '', str_replace('.ts', '.html', $this->normalize($path)));
         $upperCamelCaseName = str_replace('-', '', ucwords($name, '-_'));
 
-        $content = $this->filesystem->get(__DIR__.'/../../../resources/stubs/component.ts.blade.php');
-        $content = $this->compile($content, compact('name', 'upperCamelCaseName','cssPath', 'templatePath'));
+        $content = $this->filesystem->get($this->stubsPath.$type.'.ts.blade.php');
+        $content = $this->compile($content, compact('name', 'type', 'upperCamelCaseName', 'cssPath', 'templatePath', 'options'));
 
         $this->safePut($path, $content);
 
@@ -90,59 +58,66 @@ class CreateComponentCommand extends Command {
 
     /**
      * @param $name
-     * @param $path
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    protected function createHtml($name, $path)
-    {
-        $content = $this->filesystem->get(__DIR__.'/../../../resources/stubs/component.html.blade.php');
-        $content = $this->compile($content, compact('name'));
-
-        $this->safePut($path, $content);
-
-        $this->info("Generated {$this->normalize($path)}.");
-    }
-
-    /**
-     * @param $name
-     * @param $path
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    protected function createScss($name, $path)
-    {
-        $content = $this->filesystem->get(__DIR__.'/../../../resources/stubs/component.scss.blade.php');
-        $content = $this->compile($content, compact('name'));
-
-        $this->safePut($path, $content);
-
-        $this->info("Generated {$this->normalize($path)}.");
-    }
-
-    /**
-     * @param $name
-     * @param $path
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    protected function createSpec($name, $path)
-    {
-        $content = $this->filesystem->get(__DIR__.'/../../../resources/stubs/component.spec.ts.blade.php');
-        $content = $this->compile($content, compact('name'));
-
-        $this->safePut($path, $content);
-
-        $this->info("Generated {$this->normalize($path)}.");
-    }
-
-    /**
-     * @param $name
+     * @param $type
      * @param $path
      * @throws Exception
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
-    protected function createIndex($name, $path)
+    protected function createHtml($name, $type, $path)
     {
-        $content = $this->filesystem->get(__DIR__.'/../../../resources/stubs/index.ts.blade.php');
-        $content = $this->compile($content, compact('name'));
+        $content = $this->filesystem->get($this->stubsPath.'html.blade.php');
+        $content = $this->compile($content, compact('name', 'type'));
+
+        $this->safePut($path, $content);
+
+        $this->info("Generated {$this->normalize($path)}.");
+    }
+
+    /**
+     * @param $name
+     * @param $type
+     * @param $path
+     * @throws Exception
+     * @throws FileNotFoundException
+     */
+    protected function createScss($name, $type, $path)
+    {
+        $content = $this->filesystem->get($this->stubsPath.'scss.blade.php');
+        $content = $this->compile($content, compact('name', 'type'));
+
+        $this->safePut($path, $content);
+
+        $this->info("Generated {$this->normalize($path)}.");
+    }
+
+    /**
+     * @param $name
+     * @param $type
+     * @param $path
+     * @throws Exception
+     * @throws FileNotFoundException
+     */
+    protected function createSpec($name, $type, $path)
+    {
+        $content = $this->filesystem->get($this->stubsPath.'spec.ts.blade.php');
+        $content = $this->compile($content, compact('name', 'type'));
+
+        $this->safePut($path, $content);
+
+        $this->info("Generated {$this->normalize($path)}.");
+    }
+
+    /**
+     * @param $name
+     * @param $type
+     * @param $path
+     * @throws Exception
+     * @throws FileNotFoundException
+     */
+    protected function createIndex($name, $type, $path)
+    {
+        $content = $this->filesystem->get($this->stubsPath.'index.ts.blade.php');
+        $content = $this->compile($content, compact('name', 'type'));
 
         $this->safePut($path, $content);
 
@@ -155,20 +130,16 @@ class CreateComponentCommand extends Command {
      */
     protected function getTargetDir($componentName)
     {
-        $appRoot = __DIR__.'/../../../';
+        $appRoot = __DIR__.'/../../../../';
         $option = $this->option('path');
 
-        if ($option)
-        {
+        if ($option) {
             $path = $appRoot.$this->option('path').'/';
-        }
-        else
-        {
+        } else {
             $path = $appRoot.'angular/app/'.$componentName.'/';
         }
 
-        if (!File::exists($path))
-        {
+        if (!File::exists($path)) {
             File::makeDirectory($path);
         }
 
@@ -190,17 +161,16 @@ class CreateComponentCommand extends Command {
         // We'll include the view contents for parsing within a catcher
         // so we can avoid any WSOD errors. If an exception occurs we
         // will throw it out to the exception handler.
-        try
-        {
+        try {
             eval('?>'.$generated);
         }
 
             // If we caught an exception, we'll silently flush the output
             // buffer so that no partially rendered views get thrown out
             // to the client and confuse the user with junk.
-        catch (\Exception $e)
-        {
-            ob_get_clean(); throw $e;
+        catch (Exception $e) {
+            ob_get_clean();
+            throw $e;
         }
 
         $content = ob_get_clean();
@@ -215,8 +185,7 @@ class CreateComponentCommand extends Command {
      */
     protected function safePut($path, $content)
     {
-        if (File::exists($path))
-        {
+        if (File::exists($path)) {
             throw new Exception("File {$this->normalize($path)} already exists.");
         }
 
@@ -237,21 +206,26 @@ class CreateComponentCommand extends Command {
 
         $ret = array();
 
-        foreach ($segments as $segment)
-        {
-            if (($segment == '.') || strlen($segment) === 0)
-            {
+        foreach ($segments as $segment) {
+            if (($segment == '.') || strlen($segment) === 0) {
                 continue;
             }
-            if ($segment == '..')
-            {
+            if ($segment == '..') {
                 array_pop($ret);
-            }
-            else
-            {
+            } else {
                 array_push($ret, $segment);
             }
         }
         return str_replace('\\', '/', $root.implode('/', $ret));
+    }
+
+    /**
+     * @throws Exception
+     */
+    protected function validateInput()
+    {
+        if (!preg_match('/^[a-z0-9-_]+$/i', $this->argument('name'))) {
+            throw new Exception;
+        }
     }
 }
