@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2fbf276faa422e938335f8517a3ede4",
-    "content-hash": "540eb53b4f09c1eebb67db04a7cea304",
+    "hash": "5c7dfc814e6646bb3324139aaa5135ac",
+    "content-hash": "b64b8f9b40baaeef01afeb75fd366d7e",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -1642,6 +1642,44 @@
                 "rest"
             ],
             "time": "2015-10-07 14:48:58"
+        },
+        {
+            "name": "mlntn/lumen-artisan-serve",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mlntn/lumen-artisan-serve.git",
+                "reference": "fb6fa1d21c166cc294bcd935baf01f6cfe55f85d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mlntn/lumen-artisan-serve/zipball/fb6fa1d21c166cc294bcd935baf01f6cfe55f85d",
+                "reference": "fb6fa1d21c166cc294bcd935baf01f6cfe55f85d",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jared Mellentine",
+                    "email": "jared@mellentine.com"
+                }
+            ],
+            "description": "artisan serve for Lumen projects",
+            "homepage": "http://github.com/mlntn/lumen-artisan-serve",
+            "keywords": [
+                "artisan",
+                "lumen"
+            ],
+            "time": "2016-02-11 15:31:31"
         },
         {
             "name": "monolog/monolog",
