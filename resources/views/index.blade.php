@@ -10,9 +10,26 @@
 
         <link rel="stylesheet" href="assets/vendor.bundle.css">
         <link rel="stylesheet" href="assets/globals.css">
+        @include('env')
     </head>
     <body>
-        <avl-app>Loading...</avl-app>
+        <avl-app>
+            <div class="site-loader-cover">
+                <div class="loader ">
+                    <div class="loader-inner ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </avl-app>
 
         <script src="assets/polyfills.bundle.js"></script>
         <script src="assets/vendor.bundle.js"></script>

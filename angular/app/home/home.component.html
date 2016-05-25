@@ -26,36 +26,19 @@
     <div class="jumbotron jumbotron-fluid section-2">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <h3>Snakes</h3>
+                <div class="col-md-12">
+                    <form (ngSubmit)="login()" #loginForm="ngForm">
+                        <label class="form-group">
+                            Email
+                            <input class="form-control" type="email" required [(ngModel)]="credentials.email">
+                        </label>
+                        <label class="form-group">
+                            password
+                            <input class="form-control" type="password" required [(ngModel)]="credentials.password">
+                        </label>
 
-                    <p>
-                        A catalog chops a static reign. A departmental pipeline fights the short salt.
-                        A stamped load prevails around a ceremony. Its subway alternates the confused carrot.
-                        How can the soup retract?
-                    </p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h3>Water</h3>
-
-                    <p>
-                        A buss commands the crisis throughout the demented weather.
-                        After a trend punts the civilized mole. Around the thirty coke tries the dishonest beer.
-                        Our spare general cruises below each drift. Her postscript wards the jest.
-                        Every worn rear stops against the review mixture.
-                    </p>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h3>Hard drive</h3>
-
-                    <p>
-                        Across the textbook weds the latest waffle.
-                        Beneath an anguish groans another hit node.
-                        Why can't an exploding mole nail the cheer?
-                        Opposite the clock coasts the disabled symptom.
-                        A weapon forks the landscape.
-                        The waffle divides a formed frog over a refund.
-                    </p>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
