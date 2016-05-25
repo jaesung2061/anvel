@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use Dingo\Api\Http\Request;
 use Dingo\Api\Routing\Helpers;
@@ -9,8 +11,8 @@ use Tymon\JWTAuth\JWTAuth;
  *
  * @package App\Http\Controllers
  */
-class AuthController extends Controller {
-
+class AuthController extends Controller
+{
     use Helpers;
 
     /**
@@ -48,7 +50,7 @@ class AuthController extends Controller {
      */
     public function verify()
     {
-        if (! $user = $this->auth->parseToken()->authenticate()) {
+        if (!$user = $this->auth->parseToken()->authenticate()) {
             return response()->json(['user_not_found'], 404);
         }
 
