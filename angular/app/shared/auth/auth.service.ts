@@ -6,7 +6,7 @@ import { EVENTS } from '../events';
 @Injectable()
 export class Auth {
     private session: any = {};
-    private isAuthenticated = false;
+    private isAuthenticated: boolean = false;
 
     constructor(private api: Api,
                 private broadcaster: Broadcaster) {
@@ -19,7 +19,7 @@ export class Auth {
      * @returns {Observable<R>}
      */
     login(credentials: any) {
-        return this.api.post('auth', credentials).do((response) => {
+        return this.api.post('auth', credentials).do((response: any) => {
             this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_SUCCESS, response);
 
             this.isAuthenticated = true;
@@ -37,7 +37,7 @@ export class Auth {
      * @returns {Observable<R>}
      */
     verify(token: string) {
-        return this.api.get('auth', {data: {token: token}}).do((response) => {
+        return this.api.get('auth', {data: {token: token}}).do((response: any) => {
             this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_SUCCESS, response);
 
             this.isAuthenticated = true;
