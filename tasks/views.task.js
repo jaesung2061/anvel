@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const del = require('del');
 
 gulp.task('views', () => {
+    // Clean files
     del(['public/app/**/*.html']);
 
     gulp.src(config.src.views, {base: './angular/app'})

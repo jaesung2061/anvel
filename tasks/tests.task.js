@@ -15,7 +15,7 @@ gulp.task('tests', (done) => {
 
 gulp.task('watch-tests', (done) => {
     if (!karmaIsWatching) {
-        karmaIsWatching = true;
+        karmaIsWatching = true; // So it doesn't run twice.
         new Karma({
             configFile: configPath,
             singleRun: false

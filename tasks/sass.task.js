@@ -5,9 +5,10 @@ const del = require('del');
 const path = require('path');
 
 gulp.task('sass', () => {
+    // Clean the public/app directory.
     del(['public/app/**/*.css', 'public/app/globals.css']);
 
-    // Do the main file separately and move to public/assets/
+    // Do the globals file separately and move to public/assets/
     gulp.src(config.src.sass.globals)
         .pipe(sass())
         .pipe(gulp.dest(config.assetsPath));
@@ -24,6 +25,7 @@ gulp.task('watch-sass', function () {
             .pipe(sass())
             .pipe(gulp.dest('public'));
     });
+
     gulp.watch(config.src.sass.globals).on('change', (event) => {
         gulp.src(event.path, {base: config.appRoot + '/' + config.src.rootPath})
             .pipe(sass())
