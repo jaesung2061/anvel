@@ -3,7 +3,6 @@
  */
 export const CONFIG = {
     api: {
-        baseUrl: ''
+        baseUrl: 'api/'
     }
-    //
 };
