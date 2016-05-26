@@ -27,7 +27,7 @@ class CreateDirectiveCommand extends BaseGeneratorCommand
     {
         $this->validateInput();
 
-        $directiveName = strtolower($this->argument('name'));
+        $directiveName = $this->argument('name');
         $targetDir = $this->getTargetDir($directiveName);
         $isAttributeDirective = filter_var($this->option('attribute'), FILTER_VALIDATE_BOOLEAN);
         $type = 'directive';

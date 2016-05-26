@@ -99,8 +99,10 @@ abstract class BaseGeneratorCommand extends Command
      */
     protected function createSpec($name, $type, $path)
     {
+        $upperCamelCaseName = str_replace('-', '', ucwords($name, '-_'));
+
         $content = $this->filesystem->get($this->stubsPath.'spec.ts.blade.php');
-        $content = $this->compile($content, compact('name', 'type'));
+        $content = $this->compile($content, compact('name', 'type', 'upperCamelCaseName'));
 
         $this->safePut($path, $content);
 
@@ -134,7 +136,7 @@ abstract class BaseGeneratorCommand extends Command
         $option = $this->option('path');
 
         if ($option) {
-            $path = $appRoot.$this->option('path').'/';
+            $path = $appRoot.$this->option('path').'/'.$componentName.'/';
         } else {
             $path = $appRoot.'angular/app/'.$componentName.'/';
         }

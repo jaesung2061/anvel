@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel {
     protected $commands = [
         Commands\AngularGenerators\CreateComponentCommand::class,
         Commands\AngularGenerators\CreateDirectiveCommand::class,
+        Commands\AngularGenerators\CreateServiceCommand::class,
+        \Mlntn\Console\Commands\Serve::class,
         //
     ];
 
