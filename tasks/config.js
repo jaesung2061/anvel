@@ -23,5 +23,11 @@ module.exports = {
             'node_modules/bootstrap/scss/bootstrap-flex.scss',
             'node_modules/loaders.css/src/loaders.scss'
         ]
+    },
+    browserSync: {
+        proxy: process.env.BROWSERSYNC_PROXY_URL || 'http://localhost:8000',
+        notify: false,
+        inject: true,
+        debounce: 2000
     }
 };
