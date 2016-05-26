@@ -14,7 +14,7 @@ gulp.task('default', [
     'typescript',
     'sass',
     'views',
-    // 'tests'
+    'tests'
 ]);
 
 gulp.task('watch', [
@@ -22,5 +22,5 @@ gulp.task('watch', [
     'watch-sass',
     'watch-typescript',
     'watch-views',
-    // 'watch-tests'
+    'watch-tests'
 ]);
