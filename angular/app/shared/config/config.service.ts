@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { CONFIG } from './config';
-import { ENV } from './env';
+import { CONFIG } from '../../../config';
+import { ENV } from '../../../env';
 
 @Injectable()
 export class Config {
@@ -24,7 +24,7 @@ export class Config {
      * @param path
      * @returns {*}
      */
-    get(path) {
+    get(path): any {
         let placeholder = this.config;
         let keys = path.split('.');
 
