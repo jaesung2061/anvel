@@ -9,7 +9,7 @@ class CreateServiceCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng2:service {name} {--path=}';
+    protected $signature = 'ng:service {name} {--path=}';
 
     /**
      * The console command description.

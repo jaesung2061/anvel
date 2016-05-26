@@ -9,7 +9,7 @@ class CreateDirectiveCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng2:directive {name} {--attribute=true} {--path=}';
+    protected $signature = 'ng:directive {name} {--attribute=true} {--path=}';
 
     /**
      * The console command description.

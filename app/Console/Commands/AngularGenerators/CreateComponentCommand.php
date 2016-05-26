@@ -9,7 +9,7 @@ class CreateComponentCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng2:component {name} {--path=}';
+    protected $signature = 'ng:component {name} {--path=}';
 
     /**
      * The console command description.
