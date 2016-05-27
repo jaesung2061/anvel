@@ -18,7 +18,6 @@ module.exports = merge(common, {
     devServer: {
         port: 8080,
         proxy: {'*': 'http://anvel.app:8000'},
-        hot: true,
         historyApiFallback: true,
         watchOptions: {
             aggregateTimeout: 300,
