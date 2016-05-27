@@ -1,11 +1,10 @@
 export class Route {
     path: string;
-    name: string;
     component: any;
+    options: any;
 
-    constructor(path: string, name: string, component: any, options: Object = {}) {
+    constructor(path: string, component: any, options: any = {}) {
         this.path = path;
-        this.name = name;
         this.component = component;
 
         for (let key in options) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { RouteConfig, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AboutComponent } from './about';
 import { HomeComponent } from './home';
@@ -10,12 +10,12 @@ import { Api, Auth, Broadcaster, Config, FooterComponent, NavbarComponent, Route
     selector: 'avl-app',
     templateUrl: 'app/app.component.html',
     styleUrls: [ 'app/app.component.css' ],
-    directives: [ NavbarComponent, FooterComponent ],
-    providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS, ROUTER_PROVIDERS ]
+    directives: [ NavbarComponent, FooterComponent, ROUTER_DIRECTIVES ],
+    providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS ]
 })
-@RouteConfig([
-    new Route('/', 'Home', HomeComponent, {useAsDefault: true}),
-    new Route('/about', 'About', AboutComponent)
+@Routes([
+    new Route('/', HomeComponent, {useAsDefault: true}),
+    new Route('/about', AboutComponent)
 ])
 export class AppComponent implements OnInit {
     constructor() {

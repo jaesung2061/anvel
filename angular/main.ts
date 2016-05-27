@@ -1,5 +1,5 @@
 import { enableProdMode, provide, PLATFORM_DIRECTIVES } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 
 import 'rxjs/add/observable/throw';
@@ -15,5 +15,6 @@ if (new Config().getEnv('APP_ENV') === 'production') {
 }
 
 bootstrap(AppComponent, [
-    provide(PLATFORM_DIRECTIVES, {useValue: ROUTER_DIRECTIVES, multi: true})
+    ROUTER_PROVIDERS,
+    provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true})
 ]);
