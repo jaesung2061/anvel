@@ -8,8 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <link rel="stylesheet" href="assets/vendor.bundle.css">
-        <link rel="stylesheet" href="assets/globals.css">
         @include('env')
     </head>
     <body>
@@ -31,8 +29,7 @@
             </div>
         </avl-app>
 
-        <script src="assets/polyfills.bundle.js"></script>
-        <script src="assets/vendor.bundle.js"></script>
         <script src="assets/main.bundle.js"></script>
+        <script src="http://localhost:8080/webpack-dev-server.js"></script>
     </body>
 </html>

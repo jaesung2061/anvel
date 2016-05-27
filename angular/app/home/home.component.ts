@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'avl-home',
-    templateUrl: 'app/home/home.component.html',
-    styleUrls: [ 'app/home/home.component.css' ],
+    template: require('html!./home.component.html'),
+    styles: [require('!raw!sass!./home.component.scss')],
     directives: []
 })
 export class HomeComponent {

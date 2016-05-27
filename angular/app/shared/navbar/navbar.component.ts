@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'avl-navbar',
-    templateUrl: 'app/shared/navbar/navbar.component.html',
-    styleUrls: [ 'app/shared/navbar/navbar.component.css' ]
+    template: require('html!./navbar.component.html'),
+    styles: [require('!raw!sass!./navbar.component.scss')]
 })
 export class NavbarComponent {
     constructor() {

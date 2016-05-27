@@ -8,8 +8,8 @@ import { Api, Auth, Broadcaster, Config, FooterComponent, NavbarComponent, Route
 
 @Component({
     selector: 'avl-app',
-    templateUrl: 'app/app.component.html',
-    styleUrls: [ 'app/app.component.css' ],
+    template: require('html!./app.component.html'),
+    styles: [ require('!raw!sass!./app.component.scss') ],
     directives: [ NavbarComponent, FooterComponent, ROUTER_DIRECTIVES ],
     providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS ]
 })
