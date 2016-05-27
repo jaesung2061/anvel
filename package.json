@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "gulp && gulp watch",
-    "postinstall": "typings install && gulp setup"
+    "postinstall": "typings install && gulp vendor"
   },
   "license": "ISC",
   "dependencies": {
