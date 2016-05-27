@@ -1,8 +1,4 @@
 module.exports = (config) => {
-    const webpackConfig = Object.assign({}, require('./webpack.config'));
-
-    delete webpackConfig.output;
-
     config.set({
         basePath: '',
 
@@ -44,7 +40,7 @@ module.exports = (config) => {
             '**/*.ts': ['webpack']
         },
 
-        webpack: webpackConfig,
+        webpack: require('./webpack/webpack.testing'),
 
         coverageReporter: {
             dir: 'coverage/',
