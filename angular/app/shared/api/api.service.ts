@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
 import { Config } from '../config/config.service';
 
 @Injectable()
@@ -88,17 +87,10 @@ export class Api {
      * @returns {Observable<R>}
      */
     get(url: string, options?: any) {
-        let params = this.serialize(options && options.body || {});
-
-        options = new RequestOptions({
-            url: '/api/users',
-            method: 'GET',
-            headers: Object.assign(this.apiAcceptHeader, this.defaultHeaders),
-            search: params
-        });
+        options = this.prepareApiRequest(options);
 
         return this.http
-            .get('/api/users', options)
+            .get(this.getBuiltUrl(url), options)
             .map(this.extractData)
             .catch(this.catchError);
     }
@@ -225,6 +217,8 @@ export class Api {
         let errMsg = (error.message)
             ? error.message
             : `Error - ${error.status}`;
+
+        console.error('Server error - ' + error.status + (error.message && (' - ' + error.message)));
 
         return Observable.throw(errMsg);
     }
