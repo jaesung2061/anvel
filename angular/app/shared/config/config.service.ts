@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { CONFIG } from '../../../config';
-import { ENV } from '../../../env';
 
 @Injectable()
 export class Config {
     private config: Object = CONFIG;
-    private env: Object = ENV;
+    private env: Object = window['APP_ENVIRONMENT'];
+
+    constructor() {
+    }
 
     /**
      * Get environment variable.
