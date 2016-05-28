@@ -7,8 +7,7 @@ module.exports = merge(common, {
     output: {
         path: resolve('./public/assets'),
         filename: '[name].bundle.js',
-        sourceMapFilename: '[name].map',
-        chunkFilename: '[id].chunk.js'
+        publicPath: 'http://localhost:8080/'
     },
     cache: true,
     devtool: 'source-map',

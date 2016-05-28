@@ -2,7 +2,6 @@
   "name": "anvel",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server",
     "postinstall": "typings install"
   },
   "license": "ISC",
@@ -25,12 +24,14 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^0.17.0",
-    "browser-sync": "^2.12.8",
+    "browser-sync": "^2.12.10",
     "codelyzer": "0.0.19",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
     "dotenv": "^2.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.5.2",
     "html-loader": "^0.4.3",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "2.4.1",
