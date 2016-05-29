@@ -30,6 +30,5 @@
         </avl-app>
 
         <script src="assets/main.bundle.js"></script>
-        <script src="http://localhost:8080/webpack-dev-server.js"></script>
     </body>
 </html>
