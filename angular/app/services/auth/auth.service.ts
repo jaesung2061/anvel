@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../api';
 import { Broadcaster } from '../broadcaster';
-import { EVENTS } from '../../shared/events';
+import { EVENTS } from '../../events';
 
 @Injectable()
 export class Auth {

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { CONFIG } from '../../../config';
+import { CONFIG } from '../../config';
 
 @Injectable()
 export class Config {
     private config: Object = CONFIG;
-    private env: Object = window['APP_ENVIRONMENT'];
+    private env: Object = APP_ENVIRONMENT;
 
     constructor() {
     }

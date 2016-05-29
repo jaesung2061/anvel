@@ -5,9 +5,8 @@ import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 
 import { AppComponent } from './app/app.component';
-import { Config } from './app/services/config';
 
-if (new Config().getEnv('APP_ENV') === 'production') {
+if (APP_ENVIRONMENT.APP_ENV === 'production') {
     enableProdMode();
 }
 
