@@ -25,10 +25,41 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h1>Overview</h1>
 
-                    <p>A general overview of the project.</p>
+                    <ul>
+                        <li><a href="//angular.io">Angular 2</a></li>
+                        <li><a href="//lumen.laravel.com">Lumen</a></li>
+                        <li><a href="//github.com/dingo/api">Dingo Api</a></li>
+                        <li><a href="//github.com/tymon/jwt-auth">JWT Auth</a></li>
+                        <li><a href="//webpack.github.io">Webpack</a></li>
+                        <li><a href="//gulpjs.com/">Gulp</a></li>
+                        <li><a href="//browsersync.io/">Browser Sync</a></li>
+                    </ul>
 
                     <hr>
+                </div>
 
+                <!--Usage-->
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>Build Process</h2>
+
+                    <p>
+                        Before starting work on the project, run the following command:
+                    </p>
+
+                    <pre><code>$ gulp</code></pre>
+
+                    <p>
+                        This will boot a BrowserSync server, launch the browser and start
+                        a Webpack process which will bundle and watch the asset files.
+                        When a change is detected, it will recompile and BrowserSync will
+                        automaticaly refresh the site.
+                    </p>
+
+                    <hr>
+                </div>
+
+                <!--Directory Structure-->
+                <div class="col-md-8 col-md-offset-2">
                     <h2>Directory Structure</h2>
 
                     <p>
@@ -38,20 +69,25 @@
                     </p>
 
                     <hr>
+                </div>
 
+                <!--Generators-->
+                <div class="col-md-8 col-md-offset-2">
                     <h2>Generators</h2>
 
                     <p>
-                        There are Angular 2 component genreators that come pre-packaged with Anvel.
+                        Anvel is pre-packaged with Angular 2 component generators.
                     </p>
 
-                       <pre><code>$ php artisan ng:component my-component
+                    <pre><code>$ php artisan ng:component my-component
 $ php artisan ng:directive my-directive
 $ php artisan ng:service my-service</code></pre>
 
                     <p>
-                        By default, all files will be put into it's own folder within the <code>./angular/app</code> directory.
-                        to specify your own path, pass this argument to the command: <code>--path=/angular/app/my/custom/path</code>.
+                        By default, all files will be put into it's own folder within the
+                        <code>./angular/app</code> directory.
+                        to specify your own path, pass this argument to the command:
+                        <code>--path=/angular/app/my/custom/path</code>.
                         If you would like to change the templates from which they are generated, you can edit the files at
                         <code>./resources/stubs</code>.
                     </p>
@@ -59,12 +95,16 @@ $ php artisan ng:service my-service</code></pre>
                     <p><strong>Note:</strong> Component names must be in kebab-case.</p>
 
                     <hr>
+                </div>
 
+                <!--Importing third-party libraries-->
+                <div class="col-md-8 col-md-offset-2">
                     <h2>Importing third-party libraries</h2>
 
                     <p>
                         If you need to pull in a third-party library, it is best to use Npm to pull it in as the build
-                        process is configured to use the <code>./node_modules</code> directory to search for dependencies.
+                        process is configured to use the
+                        <code>./node_modules</code> directory to search for dependencies.
                     </p>
 
                     <h4>Importing</h4>
@@ -82,7 +122,112 @@ $ php artisan ng:service my-service</code></pre>
                         This may seem a bit strange for those who haven't used Webpack before. To read up more on how it
                         works, visit their <a href="https://webpack.github.io/">official website</a>.
                     </p>
+
+                    <hr>
                 </div>
+
+                <!--Communicating With The Server-->
+                <div class="col-md-8 col-md-offset-2">
+
+
+                    <h2>Communicating With The Server</h2>
+
+                    <p>
+                        To send requests to the server, inject the Api service to your component.
+                    </p>
+
+                    <pre><code>class AppComponent {
+    constructor(private api: Api) {}
+
+    getUsers() {
+        this.api.get('users').subscribe(
+            (response) => console.log(response),
+            (error) => console.error(error)
+        );
+    }
+}</code></pre>
+
+
+                    <hr>
+                </div>
+
+                <!--Authentication-->
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>Authentication</h2>
+
+                    <p>
+                        To user the Auth service, inject the Auth service to your component.
+                    </p>
+
+                    <h4>Logging In</h4>
+
+                    <pre><code>class AppComponent {
+    constructor(private auth: Auth) {}
+
+    login(credentials) {
+        // { email: 'email@email.com', password: '56235623' }
+
+        this.auth.login(credentials).subscribe(
+            (response) => console.log(response), // response contains user object and token.
+            (error) => console.error(error)
+        );
+    }
+}</code></pre>
+
+                    <h4>Logging Out</h4>
+
+                    <pre><code>class AppComponent {
+    constructor(private auth: Auth) {}
+
+    logout() {
+        this.auth.logout().subscribe(
+            (response) => console.log(response),
+            (error) => console.error(error)
+        );
+    }
+}</code></pre>
+
+                    <h4>Verifying Token</h4>
+
+                    <p>
+                        You should save the token to localStorage or a cookie. This
+                        allows the user to be be automatically logged in on refresh.
+                    </p>
+
+                    <pre><code>class AppComponent {
+    constructor(private auth: Auth) {}
+
+    verify() {
+        let token = window.localStorage.token;
+
+        this.auth.verify(token).subscribe(
+            (response) => console.log(response), // contains user object.
+            (error) => console.error(error)
+        );
+    }
+}</code></pre>
+
+                    <p>
+                        The three methods use the Auth service to broadcast an event.
+                        See file <code>./angular/shared/events.ts</code> to see the events.
+                        To subscribe to the events, inject the Broadcaster service.
+                    </p>
+
+                    <pre><code>// import { EVENTS } from 'relative/path/to/events.ts'
+
+class MyClass {
+    constructor(private broadcaster: Broadcaster) {}
+
+    myMethod() {
+        this.broadcaster.subscribe(EVENTS.AUTH.LOGIN_SUCCESS, (data) => {
+            console.log(data);
+        })
+    }
+}</code></pre>
+
+                    <hr>
+                </div>
+
             </div>
         </div>
     </div>
