@@ -21,6 +21,8 @@ class AuthController extends Controller
     protected $auth;
 
     /**
+     * AuthController constructor.
+     *
      * @param JWTAuth $auth
      */
     public function __construct(JWTAuth $auth)
@@ -29,6 +31,8 @@ class AuthController extends Controller
     }
 
     /**
+     * Authenticate user with credentials.
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -46,7 +50,10 @@ class AuthController extends Controller
     }
 
     /**
+     * Authenticate a user using JWT token.
      *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Tymon\JWTAuth\Exceptions\JWTException
      */
     public function verify()
     {
