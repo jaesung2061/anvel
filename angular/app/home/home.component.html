@@ -1,23 +1,19 @@
 <div class="Page">
+    <a href="https://github.com/jaesung2061/anvel">
+        <img style="z-index: 1001; position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+    </a>
+
     <div class="jumbotron jumbotron-fluid section-1">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="display-4">Hello, world!</h1>
+                <div class="col-md-12 text-xs-center">
+                    <h1 class="display-4">Angular 2 - Lumen</h1>
 
-                    <p class="lead">How will the caffeine oppress the purchase?</p>
+                    <h2>Integrated</h2>
 
-                    <hr class="m-y-2" style="border-color: #fff;">
+                    <hr class="jumbotron-hr">
 
-                    <p>
-                        An injured scenario cables a timed reflex.
-                        The garage overcomes the altered journal across the minister.
-                        An or hammer flutes the unavoidable appraisal.
-                    </p>
-
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-                    </p>
+                    <p class="lead">Starter kit to kick start development with no hassle.</p>
                 </div>
             </div>
         </div>
@@ -26,47 +22,65 @@
     <div class="jumbotron jumbotron-fluid section-2">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <form (ngSubmit)="login()" #loginForm="ngForm">
-                        <label class="form-group">
-                            Email
-                            <input class="form-control" type="email" required [(ngModel)]="credentials.email">
-                        </label>
-                        <label class="form-group">
-                            password
-                            <input class="form-control" type="password" required [(ngModel)]="credentials.password">
-                        </label>
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>Overview</h1>
 
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <p>A general overview of the project.</p>
 
-    <div class="jumbotron jumbotron-fluid section-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
+                    <hr>
+
+                    <h2>Directory Structure</h2>
+
                     <p>
-                        Across the textbook weds the latest waffle.
-                        Beneath an anguish groans another hit node.
-                        Why can't an exploding mole nail the cheer?
-                        Opposite the clock coasts the disabled symptom.
-                        A weapon forks the landscape.
-                        The waffle divides a formed frog over a refund.
+                        Angular files are located within the <code>./angular</code> directory.<br>
+                        Lumen application files are located within <code>./app</code> directory.<br>
+                        Webpack configuration is located with <code>./webpack</code> directory.
                     </p>
 
-                    <pre><code>This text is meant to be treated as sample output from a computer program.
-This text is meant to be treated as sample output from a computer program.</code></pre>
+                    <hr>
+
+                    <h2>Generators</h2>
 
                     <p>
-                        Across the textbook weds the latest waffle.
-                        Beneath an anguish groans another hit node.
-                        Why can't an exploding mole nail the cheer?
-                        Opposite the clock coasts the disabled symptom.
-                        A weapon forks the landscape.
-                        The waffle divides a formed frog over a refund.
+                        There are Angular 2 component genreators that come pre-packaged with Anvel.
+                    </p>
+
+                       <pre><code>$ php artisan ng:component my-component
+$ php artisan ng:directive my-directive
+$ php artisan ng:service my-service</code></pre>
+
+                    <p>
+                        By default, all files will be put into it's own folder within the <code>./angular/app</code> directory.
+                        to specify your own path, pass this argument to the command: <code>--path=/angular/app/my/custom/path</code>.
+                        If you would like to change the templates from which they are generated, you can edit the files at
+                        <code>./resources/stubs</code>.
+                    </p>
+
+                    <p><strong>Note:</strong> Component names must be in kebab-case.</p>
+
+                    <hr>
+
+                    <h2>Importing third-party libraries</h2>
+
+                    <p>
+                        If you need to pull in a third-party library, it is best to use Npm to pull it in as the build
+                        process is configured to use the <code>./node_modules</code> directory to search for dependencies.
+                    </p>
+
+                    <h4>Importing</h4>
+
+                    <ol>
+                        <li>Run command <code>npm install some-package</code></li>
+                        <li>Go to <code>./angular/vendor.ts</code></li>
+                        <li>
+                            Add line <code>import 'some-package/some-package.js'</code>.<br>
+                            For Css/Sass: <code>import '!style!css!sass!some-package/some-package.css'</code>.
+                        </li>
+                    </ol>
+
+                    <p>
+                        This may seem a bit strange for those who haven't used Webpack before. To read up more on how it
+                        works, visit their <a href="https://webpack.github.io/">official website</a>.
                     </p>
                 </div>
             </div>
