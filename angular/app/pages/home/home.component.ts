@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
-import { Api } from '../shared/api/api.service';
 import { Observable } from 'rxjs/Observable';
+
+import { Api } from '../../services/api/api.service';
 
 @Component({
     selector: 'avl-home',
