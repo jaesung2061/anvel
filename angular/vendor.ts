@@ -13,5 +13,9 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-// Import third-party css libraries and
+// Import third-party css libraries
+import '!style!css!sass!bootstrap/scss/bootstrap-flex.scss';
+import '!style!css!sass!loaders.css/src/loaders.scss';
+
+// Project global styles
 import '!style!css!sass!./globals.scss';
