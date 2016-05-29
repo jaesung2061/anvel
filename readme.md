@@ -4,7 +4,7 @@
 
     $ composer create-project jaesung2061/anvel
     $ cd anvel
-    # npm install -g gulp webpack
+    $ npm install -g gulp webpack
     $ npm install
     
 If you have a web server set up already, open `.env` and set `BROWSERSYNC_PROXY_URL` to the
