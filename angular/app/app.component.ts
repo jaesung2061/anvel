@@ -4,7 +4,7 @@ import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AboutComponent, HomeComponent } from './pages';
 import { Api, Auth, Broadcaster, Config } from './services';
-import { FooterComponent, NavbarComponent, Route } from './shared';
+import { FooterComponent, NavbarComponent } from './shared';
 
 @Component({
     selector: 'avl-app',
@@ -14,8 +14,8 @@ import { FooterComponent, NavbarComponent, Route } from './shared';
     providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS ]
 })
 @Routes([
-    new Route('/', HomeComponent, {useAsDefault: true}),
-    new Route('/about', AboutComponent)
+    {path: '/', component: HomeComponent},
+    {path: '/about', component: AboutComponent}
 ])
 export class AppComponent implements OnInit {
     constructor() {
