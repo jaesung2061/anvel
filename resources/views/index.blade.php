@@ -29,6 +29,8 @@
             </div>
         </avl-app>
 
+        <script src="assets/styles.bundle.js"></script>
+        <script src="assets/vendor.bundle.js"></script>
         <script src="assets/main.bundle.js"></script>
     </body>
 </html>

@@ -1,9 +1,13 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const resolve = require('./helpers').resolve;
 
 module.exports = {
-    entry: resolve('./angular/main.ts'),
+    entry: {
+        main: resolve('./angular/main.ts'),
+        vendor: resolve('./angular/vendor.ts'),
+        styles: resolve('./angular/styles.ts')
+    },
     resolve: {
         extensions: ['', '.js', '.ts']
     },
@@ -31,5 +35,8 @@ module.exports = {
                 loaders: ['raw', 'style', 'css?sourceMap', 'sass?sourceMap']
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin('commons.chunk.js', ['main', 'vendor'])
+    ]
 };
