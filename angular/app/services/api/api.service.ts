@@ -8,7 +8,7 @@ import { Config } from '../config/config.service';
 export class Api {
     baseUrl: string;
     apiAcceptHeader: any;
-    defaultHeaders: any;
+    defaultHeaders: any = {};
 
     /**
      * This class will be used as a wrapper for Angular Http.
