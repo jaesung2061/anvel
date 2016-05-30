@@ -20,11 +20,7 @@ export class Auth {
      */
     login(credentials: any) {
         return this.api.post('auth', credentials).do((response: any) => {
-            this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_SUCCESS, response);
-
-            this.isAuthenticated = true;
-            this.session.user = response.user;
-            this.session.token = response.token;
+            this.authSuccessTasks(response);
         }, (error) => {
             this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_FAILURE, error);
         });
@@ -38,11 +34,7 @@ export class Auth {
      */
     verify(token: string) {
         return this.api.get('auth', {data: {token: token}}).do((response: any) => {
-            this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_SUCCESS, response);
-
-            this.isAuthenticated = true;
-            this.session.user = response.user;
-            this.session.token = response.token;
+            this.authSuccessTasks(response);
         }, (error) => {
             this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_FAILURE, error);
         });
@@ -62,5 +54,15 @@ export class Auth {
             }, (error) => {
                 this.broadcaster.broadcast(EVENTS.AUTH.LOGOUT_FAILURE, error);
             });
+    }
+
+    private authSuccessTasks(response: any) {
+        this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_SUCCESS, response);
+
+        this.isAuthenticated = true;
+        this.session.user = response.user;
+        this.session.token = response.token;
+
+        this.api.addDefaultHeader('Authorization', 'Bearer ' + response.token);
     }
 }

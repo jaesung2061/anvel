@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+
 import { Config } from '../config/config.service';
 
 @Injectable()
@@ -43,7 +44,7 @@ export class Api {
      * @param key
      * @param value
      */
-    appendDefaultHeader(key: string, value: string) {
+    addDefaultHeader(key: string, value: string) {
         let header = {};
         header[ key ] = value;
 
@@ -87,6 +88,7 @@ export class Api {
      * @returns {Observable<R>}
      */
     get(url: string, options?: any) {
+        options.search = this.serialize(options.data || options.search || {});
         options = this.prepareApiRequest(options);
 
         return this.http
