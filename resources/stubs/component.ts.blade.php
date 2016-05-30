@@ -2,8 +2,8 @@ import { Component } from '{{ '@angular/core' }}';
 
 {{ '@Component' }}({
     selector: 'avl-{{$name}}',
-    templateUrl: '{{$templatePath}}',
-    styleUrls: [ '{{$cssPath}}' ]
+    template: require('html!./{{ "$name.$type.ts" }}'),
+    styles: [ require('!raw!sass!./{{ "$name.$type.scss" }}') ]
 })
 export class {{$upperCamelCaseName}}Component {
     constructor() {

@@ -1,9 +1,9 @@
 @if(!$options['attribute'])import { Directive } from '{{ '@angular/core' }}';
-{{--No white-space for layout issues--}}
+
 {{ '@Directive' }}({
     selector: 'avl-{{ $name }}',
-    templateUrl: '{{ $templatePath }}',
-    styleUrls: [ '{{ $cssPath }}' ]
+    template: require('html!./{{ "$name.$type.ts" }}'),
+    styles: [ require('!raw!sass!./{{ "$name.$type.scss" }}') ]
 })
 export class {{ $upperCamelCaseName }}Directive {
     constructor() {
@@ -11,11 +11,7 @@ export class {{ $upperCamelCaseName }}Directive {
 }
 @elseif($options['attribute'])import { Directive } from '{{ '@angular/core' }}';
 
-{{ '@Directive' }}({
-    selector: '[avl-{{ $name }}]',
-    templateUrl: '{{ $templatePath }}',
-    styleUrls: [ '{{ $cssPath }}' ]
-})
+{{ '@Directive' }}({selector: '[avl-{{ $name }}]'})
 export class {{ $upperCamelCaseName }}Directive {
     constructor() {
     }
