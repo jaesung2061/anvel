@@ -7,9 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
     constructor() {
-        console.log('testdfsdfsdfsdfs');
-    }
-
-    ngOnInit() {
     }
 }
