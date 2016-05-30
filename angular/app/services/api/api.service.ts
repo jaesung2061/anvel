@@ -88,7 +88,10 @@ export class Api {
      * @returns {Observable<R>}
      */
     get(url: string, options?: any) {
-        options.search = this.serialize(options.data || options.search || {});
+        if (options && (options.data || options.search)) {
+            options.search = this.serialize(options.data || options.search);
+        }
+
         options = this.prepareApiRequest(options);
 
         return this.http
