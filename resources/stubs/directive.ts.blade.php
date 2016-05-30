@@ -1,7 +1,7 @@
 @if(!$options['attribute'])import { Directive } from '{{ '@angular/core' }}';
 
 {{ '@Directive' }}({
-    selector: 'avl-{{ $name }}',
+    selector: '{{ $name }}',
     template: require('html!./{{ "$name.$type.ts" }}'),
     styles: [ require('!raw!sass!./{{ "$name.$type.scss" }}') ]
 })
@@ -11,7 +11,7 @@ export class {{ $upperCamelCaseName }}Directive {
 }
 @elseif($options['attribute'])import { Directive } from '{{ '@angular/core' }}';
 
-{{ '@Directive' }}({selector: '[avl-{{ $name }}]'})
+{{ '@Directive' }}({selector: '[{{ $name }}]'})
 export class {{ $upperCamelCaseName }}Directive {
     constructor() {
     }
