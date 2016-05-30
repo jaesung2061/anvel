@@ -19,11 +19,10 @@ export class Auth {
      * @returns {Observable<R>}
      */
     login(credentials: any) {
-        return this.api.post('auth', credentials).do((response: any) => {
-            this.authSuccessTasks(response);
-        }, (error) => {
-            this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_FAILURE, error);
-        });
+        return this.api.post('auth', credentials).do(
+            (response) => this.authSuccessTasks(response),
+            (error) => this.authFailureTasks(error)
+        );
     }
 
     /**
@@ -33,11 +32,10 @@ export class Auth {
      * @returns {Observable<R>}
      */
     verify(token: string) {
-        return this.api.get('auth', {data: {token: token}}).do((response: any) => {
-            this.authSuccessTasks(response);
-        }, (error) => {
-            this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_FAILURE, error);
-        });
+        return this.api.get('auth', {data: {token: token}}).do(
+            (response) => this.authSuccessTasks(response),
+            (error) => this.authFailureTasks(error)
+        );
     }
 
     /**
@@ -50,7 +48,7 @@ export class Auth {
             .do((response) => {
                 this.broadcaster.broadcast(EVENTS.AUTH.LOGOUT_SUCCESS, response);
 
-                delete this.session.token
+                delete this.session.token;
             }, (error) => {
                 this.broadcaster.broadcast(EVENTS.AUTH.LOGOUT_FAILURE, error);
             });
@@ -64,5 +62,12 @@ export class Auth {
         this.session.token = response.token;
 
         this.api.addDefaultHeader('Authorization', 'Bearer ' + response.token);
+
+        localStorage.setItem('token', response.token || localStorage.getItem('token'));
+    }
+
+    private authFailureTasks(error: any) {
+        localStorage.removeItem('token');
+        this.broadcaster.broadcast(EVENTS.AUTH.LOGIN_FAILURE, error);
     }
 }
