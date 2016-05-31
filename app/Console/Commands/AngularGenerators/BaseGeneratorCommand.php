@@ -127,18 +127,19 @@ abstract class BaseGeneratorCommand extends Command
     }
 
     /**
+     * @param $subDir
      * @param $componentName
      * @return string
      */
-    protected function getTargetDir($componentName)
+    protected function getTargetDir($subDir, $componentName)
     {
         $appRoot = __DIR__.'/../../../../';
         $option = $this->option('path');
 
         if ($option) {
-            $path = $appRoot.$this->option('path').'/'.$componentName.'/';
+            $path = $appRoot.$this->option('path').'/'.$subDir.'/'.$componentName.'/';
         } else {
-            $path = $appRoot.'angular/app/'.$componentName.'/';
+            $path = $appRoot.'angular/app/'.$subDir.'/'.$componentName.'/';
         }
 
         if (!File::exists($path)) {

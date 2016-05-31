@@ -28,7 +28,7 @@ class CreateComponentCommand extends BaseGeneratorCommand
         $this->validateInput();
 
         $componentName = $this->argument('name');
-        $targetDir = $this->getTargetDir($componentName);
+        $targetDir = $this->getTargetDir('components', $componentName);
         $type = 'component';
 
         $this->createTs($componentName, $type, $targetDir.$componentName.'.component.ts');

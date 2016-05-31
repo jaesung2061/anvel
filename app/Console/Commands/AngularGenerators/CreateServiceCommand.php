@@ -28,7 +28,7 @@ class CreateServiceCommand extends BaseGeneratorCommand
         $this->validateInput();
 
         $name = $this->argument('name');
-        $targetDir = $this->getTargetDir($name);
+        $targetDir = $this->getTargetDir('services', $name);
         $type = 'service';
 
         $this->createTs($name, $type, $targetDir.$name.'.service.ts');

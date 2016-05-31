@@ -1,6 +1,6 @@
 <div class="Page">
-    <a href="https://github.com/jaesung2061/anvel">
-        <img style="z-index: 1001; position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+    <a href="https://github.com/jaesung2061/anvel" id="git-fork-link">
+        <img src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
     </a>
 
     <div class="jumbotron jumbotron-fluid section-1">
@@ -83,12 +83,14 @@
                         Anvel is pre-packaged with Angular 2 component generators.
                     </p>
 
-                    <pre><code>$ php artisan ng:component my-component
-$ php artisan ng:directive my-directive
-$ php artisan ng:service my-service</code></pre>
+<pre><code>$ php artisan ng:page kebab-case-name
+$ php artisan ng:component kebab-case-name
+$ php artisan ng:directive kebab-case-name
+$ php artisan ng:service kebab-case-name
+$ php artisan ng:pipe kebab-case-name</code></pre>
 
                     <p>
-                        By default, all files will be put into it's own folder within the
+                        By default, all files will be put into it's subtype and it's own folder within the
                         <code>./angular/app</code> directory.
                         to specify your own path, pass this argument to the command:
                         <code>--path=/angular/app/my/custom/path</code>.
@@ -96,7 +98,10 @@ $ php artisan ng:service my-service</code></pre>
                         <code>./resources/stubs</code>.
                     </p>
 
-                    <p><strong>Note:</strong> Component names must be in kebab-case.</p>
+                    <p>
+                        <strong>Note:</strong> Component names must be in kebab-case.<br>
+                        <strong>Note 2:</strong> You do not need to append a trailing "type" such as Http[Service].
+                    </p>
 
                     <hr>
                 </div>
@@ -118,9 +123,13 @@ $ php artisan ng:service my-service</code></pre>
                         <li>Go to <code>./angular/vendor.ts</code></li>
                         <li>
                             Add line <code>import 'some-package/some-package.js'</code>.<br>
-                            For Css/Sass: <code>import '!style!css!sass!some-package/some-package.css'</code>.
                         </li>
                     </ol>
+
+                    <p>
+                        For css/scss dependencies, go to <code>./angular/styles.ts</code> and add this line:<br>
+                        <code>import `!style!css!sass!&lt;vendor&gt;/path/to/file.scss`</code>
+                    </p>
 
                     <p>
                         This may seem a bit strange for those who haven't used Webpack before. To read up more on how it
@@ -140,17 +149,20 @@ $ php artisan ng:service my-service</code></pre>
                         To send requests to the server, inject the Api service to your component.
                     </p>
 
-                    <pre><code>class AppComponent {
+<pre><code>class AppComponent {
+    users = [];
+
     constructor(private api: Api) {}
 
     getUsers() {
         this.api.get('users').subscribe(
-            (response) => console.log(response),
+            (response) => {
+                this.users = response.users;
+            },
             (error) => console.error(error)
         );
     }
 }</code></pre>
-
 
                     <hr>
                 </div>
@@ -165,7 +177,7 @@ $ php artisan ng:service my-service</code></pre>
 
                     <h4>Logging In</h4>
 
-                    <pre><code>class AppComponent {
+<pre><code>class AppComponent {
     constructor(private auth: Auth) {}
 
     login(credentials) {
@@ -180,7 +192,7 @@ $ php artisan ng:service my-service</code></pre>
 
                     <h4>Logging Out</h4>
 
-                    <pre><code>class AppComponent {
+<pre><code>class AppComponent {
     constructor(private auth: Auth) {}
 
     logout() {
@@ -198,11 +210,11 @@ $ php artisan ng:service my-service</code></pre>
                         allows the user to be be automatically logged in on refresh.
                     </p>
 
-                    <pre><code>class AppComponent {
+<pre><code>class AppComponent {
     constructor(private auth: Auth) {}
 
     verify() {
-        let token = window.localStorage.token;
+        let token = window.localStorage.getItem('token');
 
         this.auth.verify(token).subscribe(
             (response) => console.log(response), // contains user object.
@@ -217,7 +229,7 @@ $ php artisan ng:service my-service</code></pre>
                         To subscribe to the events, inject the Broadcaster service.
                     </p>
 
-                    <pre><code>// import { EVENTS } from 'relative/path/to/events.ts'
+<pre><code>// import { EVENTS } from 'relative/path/to/events.ts'
 
 class MyClass {
     constructor(private broadcaster: Broadcaster) {}
@@ -231,7 +243,6 @@ class MyClass {
 
                     <hr>
                 </div>
-
             </div>
         </div>
     </div>
