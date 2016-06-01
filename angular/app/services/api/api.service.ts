@@ -223,7 +223,7 @@ export class Api {
             ? error.message
             : `Error - ${error.status}`;
 
-        console.error('Server error - ' + error.status + (error.message && (' - ' + error.message)));
+        console.error('Server error - ' + error.status + (error.message && (' - ' + error.message) || ''));
 
         return Observable.throw(errMsg);
     }
