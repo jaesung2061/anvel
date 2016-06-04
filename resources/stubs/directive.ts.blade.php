@@ -2,7 +2,7 @@
 
 {{ '@Directive' }}({
     selector: '{{lcfirst($upperCamelCaseName) }}',
-    template: require('html!./{{ "$name.$type.ts" }}'),
+    template: require('html!./{{ "$name.$type.html" }}'),
     styles: [ require('!raw!sass!./{{ "$name.$type.scss" }}') ]
 })
 export class {{ $upperCamelCaseName }}Directive {
