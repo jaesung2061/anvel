@@ -19,11 +19,8 @@ export class Auth {
      * @returns {Observable<R>}
      */
     login(credentials: any) {
-        console.log('test');
         return this.api.post('auth', credentials).do(
-            (response) => {
-                this.authSuccessTasks(response)
-            },
+            (response) => this.authSuccessTasks(response),
             (error) => this.authFailureTasks(error)
         );
     }

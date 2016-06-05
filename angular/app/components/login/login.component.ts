@@ -9,19 +9,18 @@ import { Auth } from '../../services';
 })
 export class LoginComponent {
     credentials = {};
-    
+
     constructor(private auth: Auth) {
     }
-    
+
     login(credentials) {
-        //noinspection TypeScriptValidateJSTypes
         this.auth.login(credentials).subscribe(
-            (response) => {
-                console.log(response);
+            () => {
+                console.log('Login success.');
             },
             (error) => {
                 console.log(error);
             }
-        )
+        );
     }
 }
