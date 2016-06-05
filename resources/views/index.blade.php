@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" my-app>
+<html lang="en">
     <head>
         <title>Angular 2 Lumen Starter Kit</title>
         <base href="/">
