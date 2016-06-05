@@ -19,210 +19,56 @@
         </div>
     </div>
 
-    <div class="jumbotron jumbotron-fluid section-2">
+    <div class="jumbotron jumbotron-fluid section-2 bg-faded">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h1>Overview</h1>
+                <div class="col-md-4 col-xs-12">
+                    <h2>Angular 2</h2>
 
-                    <ul>
-                        <li><a href="//angular.io">Angular 2</a></li>
-                        <li><a href="//lumen.laravel.com">Lumen</a></li>
-                        <li><a href="//github.com/dingo/api">Dingo Api</a></li>
-                        <li><a href="//github.com/tymon/jwt-auth">JWT Auth</a></li>
-                        <li>
-                            <a href="//v4-alpha.getbootstrap.com">Bootstrap 4</a> /
-                            <a href="//github.com/valor-software/ng2-bootstrap">Ng2 Bootstrap</a>
-                        </li>
-                        <li><a href="//webpack.github.io">Webpack</a></li>
-                        <li><a href="//gulpjs.com">Gulp</a></li>
-                        <li><a href="//browsersync.io">Browser Sync</a></li>
-                    </ul>
+                    <p>
+                        Angular 2 is a huge upgrade over the amazing AngularJS framework. Using
+                        Typescript, use the awesome decorator feature with strong typing to catch
+                        bugs early. Get started now with the future of front-end development.
+                    </p>
 
-                    <hr>
+                    <p><a class="btn btn-secondary" href="https://angular.io" role="button">Official Docs »</a></p>
                 </div>
 
-                <!--Usage-->
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Build Process</h2>
+                <div class="col-md-4 col-xs-12">
+                    <h2>Lumen</h2>
 
                     <p>
-                        Before starting work on the project, run the following command:
+                        The Lumen framework is the perfect fit to integrate with Angular.
+                        Get the best of what Laravel has to offer with blazing fast performance.
+                        Anvel comes pre-packed with Dingo API and JWT Auth.
                     </p>
 
-                    <pre><code>$ gulp</code></pre>
-
-                    <p>
-                        This will boot a BrowserSync server, launch the browser and start
-                        a Webpack process which will bundle and watch the asset files.
-                        When a change is detected, it will recompile and BrowserSync will
-                        automaticaly refresh the site.
+                    <p><a class="btn btn-secondary" href="https://lumen.laravel.com" role="button">Official Docs »</a>
                     </p>
-
-                    <hr>
                 </div>
 
-                <!--Directory Structure-->
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Directory Structure</h2>
+                <div class="col-md-4 col-xs-12">
+                    <h2>Webpack</h2>
 
                     <p>
-                        Angular files are located within the <code>./angular</code> directory.<br>
-                        Lumen application files are located within <code>./app</code> directory.<br>
-                        Webpack configuration is located with <code>./webpack</code> directory.
+                        Webpack is perhaps the most powerful build process on the market today. Though
+                        it might be a bit complicated to set up. No worries, though. It's all set
+                        up for you and ready to go. Get started developing hassle free!
                     </p>
 
-                    <hr>
+                    <p><a class="btn btn-secondary" href="https://webpack.github.io/docs/" role="button">Official Docs »</a></p>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!--Generators-->
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Generators</h2>
+    <div class="jumbotron jumbotron-fluid section-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Installation</h2>
 
-                    <p>
-                        Anvel is pre-packaged with Angular 2 component generators.
-                    </p>
-
-<pre><code>$ php artisan ng:page kebab-case-name
-$ php artisan ng:component kebab-case-name
-$ php artisan ng:directive kebab-case-name
-$ php artisan ng:service kebab-case-name
-$ php artisan ng:pipe kebab-case-name</code></pre>
-
-                    <p>
-                        By default, all files will be put into it's subtype and it's own folder within the
-                        <code>./angular/app</code> directory.
-                        to specify your own path, pass this argument to the command:
-                        <code>--path=/angular/app/my/custom/path</code>.
-                        If you would like to change the templates from which they are generated, you can edit the files at
-                        <code>./resources/stubs</code>.
-                    </p>
-
-                    <p>
-                        <strong>Note:</strong> Component names must be in kebab-case.<br>
-                        <strong>Note 2:</strong> You do not need to append a trailing "type" such as Http[Service].
-                    </p>
-
-                    <hr>
-                </div>
-
-                <!--Importing third-party libraries-->
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Importing third-party libraries</h2>
-
-                    <p>
-                        If you need to pull in a third-party library, it is best to use Npm to pull it in as the build
-                        process is configured to use the
-                        <code>./node_modules</code> directory to search for dependencies.
-                    </p>
-
-                    <h4>Importing</h4>
-
-                    <ol>
-                        <li>Run command <code>npm install some-package</code></li>
-                        <li>Go to <code>./angular/vendor.ts</code></li>
-                        <li>
-                            Add line <code>import 'some-package/some-package.js'</code>.<br>
-                        </li>
-                    </ol>
-
-                    <p>
-                        For css/scss dependencies, go to <code>./angular/styles.ts</code> and add this line:<br>
-                        <code>import `!style!css!sass!path/to/file.scss`</code>
-                    </p>
-
-                    <p>
-                        This may seem a bit strange for those who haven't used Webpack before. To read up more on how it
-                        works, visit their <a href="https://webpack.github.io/">official website</a>.
-                    </p>
-
-                    <hr>
-                </div>
-
-                <!--Communicating With The Server-->
-                <div class="col-md-8 col-md-offset-2">
-
-
-
-
-                    <hr>
-                </div>
-
-                <!--Authentication-->
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Authentication</h2>
-
-                    <p>
-                        To use the Auth service, inject the Auth service to your component.
-                    </p>
-
-                    <h4>Logging In</h4>
-
-<pre><code>class AppComponent {
-    constructor(private auth: Auth) {}
-
-    login(credentials) {
-        // { email: 'email@email.com', password: '56235623' }
-
-        this.auth.login(credentials).subscribe(
-            (response) => console.log(response), // response contains user object and token.
-            (error) => console.error(error)
-        );
-    }
-}</code></pre>
-
-                    <h4>Logging Out</h4>
-
-<pre><code>class AppComponent {
-    constructor(private auth: Auth) {}
-
-    logout() {
-        this.auth.logout().subscribe(
-            (response) => console.log(response),
-            (error) => console.error(error)
-        );
-    }
-}</code></pre>
-
-                    <h4>Verifying Token</h4>
-
-                    <p>
-                        You should save the token to localStorage or a cookie. This
-                        allows the user to be be automatically logged in on refresh.
-                    </p>
-
-<pre><code>class AppComponent {
-    constructor(private auth: Auth) {}
-
-    verify() {
-        let token = window.localStorage.getItem('token');
-
-        this.auth.verify(token).subscribe(
-            (response) => console.log(response), // contains user object.
-            (error) => console.error(error)
-        );
-    }
-}</code></pre>
-
-                    <p>
-                        The three methods use the Auth service to broadcast an event.
-                        Open file <code>./angular/app/events.ts</code> to see the events.
-                        To subscribe to the events, inject the Broadcaster service.
-                    </p>
-
-<pre><code>// import { EVENTS } from 'relative/path/to/events.ts'
-
-class MyClass {
-    constructor(private broadcaster: Broadcaster) {}
-
-    myMethod() {
-        this.broadcaster.subscribe(EVENTS.AUTH.LOGIN_SUCCESS, (data) => {
-            console.log(data);
-        })
-    }
-}</code></pre>
-
-                    <hr>
+                    <div [innerHtml]="installationDocs"></div>
                 </div>
             </div>
         </div>

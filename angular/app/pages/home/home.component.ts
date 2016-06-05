@@ -9,20 +9,8 @@ import { Auth } from '../../services/auth/auth.service';
     directives: []
 })
 export class HomeComponent {
-    credentials: Object = {
-        email: '',
-        password: ''
-    };
+    installationDocs = require('!html!markdown!./readme.md');
 
     constructor(private auth: Auth) {
-    }
-
-    login() {
-        this.auth.login(this.credentials)
-            .subscribe((response: any) => {
-                console.log(response);
-            }, (test: any) => {
-                console.log(test);
-            });
     }
 }
