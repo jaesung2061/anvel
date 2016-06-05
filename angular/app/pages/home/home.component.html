@@ -143,26 +143,7 @@ $ php artisan ng:pipe kebab-case-name</code></pre>
                 <div class="col-md-8 col-md-offset-2">
 
 
-                    <h2>Communicating With The Server</h2>
 
-                    <p>
-                        To send requests to the server, inject the Api service to your component.
-                    </p>
-
-<pre><code>class AppComponent {
-    users = [];
-
-    constructor(private api: Api) {}
-
-    getUsers() {
-        this.api.get('users').subscribe(
-            (response) => {
-                this.users = response.users;
-            },
-            (error) => console.error(error)
-        );
-    }
-}</code></pre>
 
                     <hr>
                 </div>

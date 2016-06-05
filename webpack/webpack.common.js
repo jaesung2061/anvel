@@ -33,6 +33,10 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ['raw', 'style', 'css?sourceMap', 'sass?sourceMap']
+            },
+            {
+                test: /\.md$/,
+                loader: 'html!markdown'
             }
         ]
     },
