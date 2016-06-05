@@ -1,0 +1,17 @@
+<form (ngSubmit)="login(credentials)" #heroForm="ngForm">
+    <label class="form-group">
+        Email
+        <input class="form-control" type="email" [(ngModel)]="credentials.email"
+               ngControl="email"  #name="ngForm" required>
+    </label>
+
+    <label class="form-group">
+        password
+        <input class="form-control" type="password" [(ngModel)]="credentials.password"
+               ngControl="password"  #name="ngForm" required>
+    </label>
+
+    <div class="text-xs-right">
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </div>
+</form>

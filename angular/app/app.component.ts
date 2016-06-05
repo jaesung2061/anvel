@@ -4,13 +4,13 @@ import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AboutComponent, DocsComponent, HomeComponent } from './pages';
 import { Api, Auth, Broadcaster, Config } from './services';
-import { FooterComponent, NavbarComponent } from './shared';
+import { FooterComponent, LoginComponent, NavbarComponent } from './components';
 
 @Component({
     selector: 'avl-app',
     template: require('html!./app.component.html'),
     styles: [ require('!raw!sass!./app.component.scss') ],
-    directives: [ NavbarComponent, FooterComponent, ROUTER_DIRECTIVES ],
+    directives: [ NavbarComponent, LoginComponent, FooterComponent, ROUTER_DIRECTIVES ],
     providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS ]
 })
 @Routes([

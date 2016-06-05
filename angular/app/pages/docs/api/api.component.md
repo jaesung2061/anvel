@@ -36,9 +36,9 @@ Injecting the Api service.
 
 ### POST/PATCH/PUT
 
-The method calls take the same arguments.
+All three method calls take the same arguments.
 
-    let options = {data: {email: 'john@example.com', password: 'password'}}; // :)
+    let options = {email: 'john@example.com', password: 'password'};
 
     this.api.post('users', options).subscribe(
         (response) => console.log(response),

@@ -1,1 +1,3 @@
-// export * from './MY-COMPONENT';
+export * from './navbar';
+export * from './footer';
+export * from './login';
