@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
         // send request to server to verify and
         // get user object.
         if (token) {
-            this.auth.verify(token) .subscribe(
+            this.auth.verify(token).subscribe(
                 (response) => this.currentUser = response,
                 () => localStorage.removeItem('token')
             );
