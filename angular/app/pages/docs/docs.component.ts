@@ -3,6 +3,7 @@ import { Routes, Router } from '@angular/router';
 
 import { ApiComponent } from './api';
 import { AuthenticationComponent } from './authentication';
+import { BroadcasterComponent } from './broadcaster';
 import { RoutingComponent } from './routing';
 
 @Component({
@@ -13,6 +14,7 @@ import { RoutingComponent } from './routing';
 @Routes([
     {path: '/api', component: ApiComponent},
     {path: '/authentication', component: AuthenticationComponent},
+    {path: '/broadcaster', component: BroadcasterComponent},
     {path: '/routing', component: RoutingComponent}
 ])
 export class DocsComponent implements OnInit {
