@@ -47,6 +47,8 @@ Add this link anywhere accessible.
 
 Refresh the page and click on the link.
 
+---
+
 ### Subroutes
 
 The previous example can be done with any component. Just remember to add
