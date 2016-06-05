@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Api } from '../../services'
+import { Auth } from '../../services';
 
 @Component({
     selector: 'avl-login',
@@ -10,12 +10,12 @@ import { Api } from '../../services'
 export class LoginComponent {
     credentials = {};
     
-    constructor(private api: Api) {
+    constructor(private auth: Auth) {
     }
     
     login(credentials) {
         //noinspection TypeScriptValidateJSTypes
-        this.api.post('auth', credentials).subscribe(
+        this.auth.login(credentials).subscribe(
             (response) => {
                 console.log(response);
             },
