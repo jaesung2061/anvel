@@ -19,8 +19,11 @@ export class Auth {
      * @returns {Observable<R>}
      */
     login(credentials: any) {
+        console.log('test');
         return this.api.post('auth', credentials).do(
-            (response) => this.authSuccessTasks(response),
+            (response) => {
+                this.authSuccessTasks(response)
+            },
             (error) => this.authFailureTasks(error)
         );
     }
@@ -64,6 +67,7 @@ export class Auth {
         this.api.addDefaultHeader('Authorization', 'Bearer ' + response.token);
 
         localStorage.setItem('token', response.token || localStorage.getItem('token'));
+
     }
 
     private authFailureTasks(error: any) {
