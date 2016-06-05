@@ -38,9 +38,9 @@ Injecting the Api service.
 
 All three method calls take the same arguments.
 
-    let options = {email: 'john@example.com', password: 'password'};
+    let data = {email: 'john@example.com', password: 'password'};
 
-    this.api.post('users', options).subscribe(
+    this.api.post('users', data).subscribe(
         (response) => console.log(response),
         (error) => console.error(error)
     );
