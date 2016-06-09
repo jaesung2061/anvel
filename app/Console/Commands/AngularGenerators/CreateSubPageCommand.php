@@ -36,7 +36,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
           /**
      * Target of Subpage Component will be pages/{pageName}/subpages/{pageName.name} 
      */ 
-        $targetDir = $this->getTargetDir('pages',$this->argument('pageName').'/subpages', $componentName);
+        $targetDir = $this->getTargetDir('pages',$this->argument('pageName').'/subpages//'.$this->argument('name'), $componentName);
             
         $type = 'component';
 
