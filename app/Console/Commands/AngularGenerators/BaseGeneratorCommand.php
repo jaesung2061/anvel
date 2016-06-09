@@ -26,6 +26,10 @@ abstract class BaseGeneratorCommand extends Command
      *
      * @param Filesystem $filesystem
      */
+
+
+
+    
     public function __construct(Filesystem $filesystem)
     {
         parent::__construct();
@@ -55,6 +59,47 @@ abstract class BaseGeneratorCommand extends Command
 
         $this->info("Generated {$this->normalize($path)}.");
     }
+
+
+    // Name of below function may not appropriate . change it.
+
+    public function createSubPageExporterIndex($name,$type,$path)
+    {
+        //To be added in subpages/index.ts
+        $data="\n export * from './".$name."';";
+
+        //To be added in pages/index.ts
+        $data2="export * from './subpages';";
+
+        //To check wheather or not $data2 is  present pages/index.ts
+        $lines = file($path.'../../index.ts');
+        $found=false;
+
+        //Check subpages/index.ts present .If not create new. and append $data
+        if(!File::exists($path.'../index.ts')){
+           $this->createIndex($name, $type, $path.'../index.ts');
+           File::put($path.'../index.ts','');
+        }
+       File::append($path.'../index.ts',$data,true);
+
+        //Check $data2 is available in pages/index.ts
+         foreach($lines as $line)
+        {
+          if(strpos($line, $data2) !== false){
+            $found=true;break;
+            }
+        }
+        //If not found $data2 in pages/index.ts it append $data2
+        if(!$found)
+        {
+          File::append($path.'../../index.ts',"\n".$data2,true);
+        }
+
+
+
+    }
+
+
 
     /**
      * @param $name
@@ -143,7 +188,8 @@ abstract class BaseGeneratorCommand extends Command
         }
 
         if (!File::exists($path)) {
-            File::makeDirectory($path);
+            File::makeDirectory($path,0755,true,true);
+            
         }
 
         return $path;
