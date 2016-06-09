@@ -31,7 +31,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
      * Name of Subpage Component will be {pageName.name}  .. to prevent name collide.
      */ 
 
-        $componentName = $this->argument('pageName').$this->argument('name');
+        $componentName = $this->argument('pageName').ucfirst($this->argument('name'));
 
           /**
      * Target of Subpage Component will be pages/{pageName}/subpages/{pageName.name} 
