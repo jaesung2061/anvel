@@ -9,7 +9,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng:subpage {name} {pageName}';
+    protected $signature = 'ng:subpage {name} {pageName} {--path=}';
 
     /**
      * The console command description.
