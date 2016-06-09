@@ -216,7 +216,7 @@ export class Api {
     private extractData(response: any): any {
         let body = response.json();
 
-        return body.data || {};
+        return body.data;
     }
 
     /**
