@@ -36,5 +36,6 @@ class CreateComponentCommand extends BaseGeneratorCommand
         $this->createScss($componentName, $type, $targetDir.$componentName.'.component.scss');
         $this->createSpec($componentName, $type, $targetDir.$componentName.'.spec.ts');
         $this->createIndex($componentName, $type, $targetDir.'index.ts');
+        $this->updateUpIndex($componentName, $type, $targetDir);
     }
 }
