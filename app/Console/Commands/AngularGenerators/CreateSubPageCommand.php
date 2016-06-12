@@ -9,7 +9,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng:subpage {name} {pageName} {--path=}';
+    protected $signature = 'ng:subpage {name} {pageName}  {--path=}';
 
     /**
      * The console command description.
@@ -30,14 +30,14 @@ class CreateSubPageCommand extends BaseGeneratorCommand
         $pageName=$this->argument('pageName');
         $name=$this->argument('name');
          
-           /**
-     * Name of Subpage Component will be {pageName.name}  .. to prevent name collide.
+    /**
+     * Name of Subpage Component will be {pageName.name}  .. to prevent name collision.
      */ 
 
         $componentName = $pageName.ucfirst($name);
 
      
-        $targetDir = $this->getTargetDir('pages'.'/'.$pageName.'/'.'subpages',$name);
+        $targetDir = $this->getTargetDir('pages'.'/'.$pageName,$name);
         
             
         $type = 'component';
@@ -47,12 +47,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
         $this->createScss($componentName, $type, $targetDir.$componentName.'.component.scss');
         $this->createSpec($componentName, $type, $targetDir.$componentName.'.spec.ts');
         $this->createIndex($componentName, $type, $targetDir.'index.ts');
-         
-          /**
-     * Create index.ts file in subpage/index.ts
-     * Append export * from './subpage' pages/index.ts 
-     */ 
-        $this->createSubPageExporterIndex($name,$type,$targetDir);
+        $this->updateUpIndex($name,$type,$targetDir);
        
     }
 }
