@@ -35,6 +35,7 @@ class CreateDirectiveCommand extends BaseGeneratorCommand
         $this->createTs($directiveName, $type, $targetDir.$directiveName.'.directive.ts', ['attribute' => $isAttributeDirective]);
         $this->createSpec($directiveName, $type, $targetDir.$directiveName.'.spec.ts');
         $this->createIndex($directiveName, $type, $targetDir.'index.ts');
+        $this->updateUpIndex($directiveName, $type, $targetDir);
 
         if (!$isAttributeDirective) {
             $this->createHtml($directiveName, $type, $targetDir.$directiveName.'.directive.html');
