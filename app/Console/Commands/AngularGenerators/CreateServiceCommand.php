@@ -34,5 +34,6 @@ class CreateServiceCommand extends BaseGeneratorCommand
         $this->createTs($name, $type, $targetDir.$name.'.service.ts');
         $this->createSpec($name, $type, $targetDir.$name.'.spec.ts');
         $this->createIndex($name, $type, $targetDir.'index.ts');
+        $this->updateUpIndex($name, $type, $targetDir);
     }
 }
