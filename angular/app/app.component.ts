@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { AboutComponent, DocsComponent, HomeComponent } from './pages';
 import { Api, Auth, Broadcaster, Config } from './services';
 import { FooterComponent, LoginComponent, NavbarComponent } from './components';
 import { EVENTS } from './events';
@@ -14,11 +13,6 @@ import { EVENTS } from './events';
     directives: [ NavbarComponent, LoginComponent, FooterComponent, ROUTER_DIRECTIVES ],
     providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS ]
 })
-@Routes([
-    {path: '/', component: HomeComponent},
-    {path: '/docs', component: DocsComponent},
-    {path: '/about', component: AboutComponent}
-])
 export class AppComponent implements OnInit {
     currentUser;
 
