@@ -216,6 +216,8 @@ export class Api {
     private extractData(response: any): any {
         let body = response.json();
 
+        console.error('Server error - ' + error.status + (error.message && (' - ' + error.message) || ''));
+
         return body.data;
     }
 
