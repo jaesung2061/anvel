@@ -9,7 +9,7 @@ class CreatePageCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng:page {name} {--path=}';
+    protected $signature = 'ng:page {name} {--routes} {--path=}';
 
     /**
      * The console command description.
@@ -36,6 +36,26 @@ class CreatePageCommand extends BaseGeneratorCommand
         $this->createScss($componentName, $type, $targetDir.$componentName.'.component.scss');
         $this->createSpec($componentName, $type, $targetDir.$componentName.'.spec.ts');
         $this->createIndex($componentName, $type, $targetDir.'index.ts');
+
+        if ($this->option('routes')) {
+            $this->createRoutes($componentName, $targetDir.$componentName.'.routes.ts');
+        }
+
         $this->updateUpIndex($componentName, $type, $targetDir);
+    }
+
+    protected function createRoutes($name, $path)
+    {
+        // For use on component decorator to identify css and template path
+        $capsSnakeCaseName = strtoupper($name);
+        $capsSnakeCaseName = str_replace('-', '_', $capsSnakeCaseName);
+        $upperCamelCaseName = str_replace('-', '', ucwords($name, '-_'));
+
+        $content = $this->filesystem->get($this->stubsPath.'routes.ts.blade.php');
+        $content = $this->compile($content, compact('name', 'capsSnakeCaseName', 'upperCamelCaseName'));
+
+        $this->safePut($path, $content);
+
+        $this->info("Generated {$this->normalize($path)}.");
     }
 }
