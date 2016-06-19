@@ -37,11 +37,11 @@ abstract class BaseGeneratorCommand extends Command
      * @param $name
      * @param $type
      * @param $path
-     * @param array $options
+     * @param bool $routes
      * @throws Exception
      * @throws FileNotFoundException
      */
-    protected function createTs($name, $type, $path, $options = [])
+    protected function createTs($name, $type, $path, $routes = false)
     {
         // For use on component decorator to identify css and template path
         $cssPath = str_replace('angular/', '', str_replace('.ts', '.css', $this->normalize($path)));
@@ -49,7 +49,15 @@ abstract class BaseGeneratorCommand extends Command
         $upperCamelCaseName = str_replace('-', '', ucwords($name, '-_'));
 
         $content = $this->filesystem->get($this->stubsPath.$type.'.ts.blade.php');
-        $content = $this->compile($content, compact('name', 'type', 'upperCamelCaseName', 'cssPath', 'templatePath', 'options'));
+        $content = $this->compile($content, compact(
+            'name',
+            'type',
+            'upperCamelCaseName',
+            'cssPath',
+            'templatePath',
+            'options',
+            'routes'
+        ));
 
         $this->safePut($path, $content);
 
@@ -85,13 +93,14 @@ abstract class BaseGeneratorCommand extends Command
      * @param $name
      * @param $type
      * @param $path
+     * @param bool $routes
      * @throws Exception
      * @throws FileNotFoundException
      */
-    protected function createHtml($name, $type, $path)
+    protected function createHtml($name, $type, $path, $routes = false)
     {
         $content = $this->filesystem->get($this->stubsPath.'html.blade.php');
-        $content = $this->compile($content, compact('name', 'type'));
+        $content = $this->compile($content, compact('name', 'type', 'routes'));
 
         $this->safePut($path, $content);
 
@@ -138,13 +147,14 @@ abstract class BaseGeneratorCommand extends Command
      * @param $name
      * @param $type
      * @param $path
+     * @param bool $routes
      * @throws Exception
      * @throws FileNotFoundException
      */
-    protected function createIndex($name, $type, $path)
+    protected function createIndex($name, $type, $path, $routes = false)
     {
         $content = $this->filesystem->get($this->stubsPath.'index.ts.blade.php');
-        $content = $this->compile($content, compact('name', 'type'));
+        $content = $this->compile($content, compact('name', 'type', 'routes'));
 
         $this->safePut($path, $content);
 

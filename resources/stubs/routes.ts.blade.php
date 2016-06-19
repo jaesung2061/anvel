@@ -1,10 +1,10 @@
-import { provideRouter, RouterConfig } from '{{ '@' }}angular/router';
+import { RouterConfig } from '{{ '@' }}angular/router';
 
 import { {{ $upperCamelCaseName }}Component } from './{{ $name }}.component';
 
-export const routes: RouterConfig = [
+export const {{ $upperCamelCaseName }}Routes: RouterConfig = [
     {
-        path: 'docs',
+        path: '{{ $name }}',
         component: {{ $upperCamelCaseName }}Component,
         // index: true,
         children: [
@@ -13,8 +13,4 @@ export const routes: RouterConfig = [
             //
         ]
     },
-];
-
-export const {{ $capsSnakeCaseName }}_ROUTER_PROVIDERS = [
-    provideRouter(routes)
 ];
