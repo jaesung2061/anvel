@@ -9,8 +9,8 @@ import { GeneratorsComponent } from './generators';
 
 @Component({
     selector: 'docs',
-    template: require('html!./docs.component.html'),
-    styles: [ require('!raw!sass!./docs.component.scss') ]
+    template: require('./docs.component.html'),
+    styles: [ require('./docs.component.scss') ]
 })
 @Routes([
     {path: '/api', component: ApiComponent},

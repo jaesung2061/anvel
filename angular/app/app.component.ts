@@ -9,8 +9,8 @@ import { EVENTS } from './events';
 
 @Component({
     selector: 'avl-app',
-    template: require('html!./app.component.html'),
-    styles: [ require('!raw!sass!./app.component.scss') ],
+    template: require('./app.component.html'),
+    styles: [ require('./app.component.scss') ],
     directives: [ NavbarComponent, LoginComponent, FooterComponent, ROUTER_DIRECTIVES ],
     providers: [ Api, Auth, Broadcaster, Config, HTTP_PROVIDERS ]
 })
