@@ -26,6 +26,10 @@ abstract class BaseGeneratorCommand extends Command
      *
      * @param Filesystem $filesystem
      */
+
+
+
+    
     public function __construct(Filesystem $filesystem)
     {
         parent::__construct();
@@ -55,6 +59,25 @@ abstract class BaseGeneratorCommand extends Command
 
         $this->info("Generated {$this->normalize($path)}.");
     }
+
+
+     /**
+     * @param $name
+     * @param $type
+     * @param $path
+     * @throws Exception
+     * @throws FileNotFoundException
+     */
+
+    public function updateUpIndex($name,$type,$path)
+    {
+        
+        $data="\n export * from './".$name."';";
+       File::append($path.'./../index.ts',$data,true);
+       $this->info("Updated {$this->normalize($path."./../index.ts")}.");
+    }
+
+
 
     /**
      * @param $name
@@ -144,6 +167,7 @@ abstract class BaseGeneratorCommand extends Command
 
         if (!File::exists($path)) {
             File::makeDirectory($path);
+            
         }
 
         return $path;

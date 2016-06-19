@@ -34,5 +34,6 @@ class CreatePipeCommand extends BaseGeneratorCommand
         $this->createTs($componentName, $type, $targetDir.$componentName.'.pipe.ts');
         $this->createSpec($componentName, $type, $targetDir.$componentName.'.spec.ts');
         $this->createIndex($componentName, $type, $targetDir.'index.ts');
+         $this->updateUpIndex($componentName, $type, $targetDir);
     }
 }

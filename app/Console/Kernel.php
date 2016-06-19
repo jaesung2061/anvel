@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel {
         Commands\AngularGenerators\CreateServiceCommand::class,
         Commands\AngularGenerators\CreatePipeCommand::class,
         Commands\AngularGenerators\CreatePageCommand::class,
+        Commands\AngularGenerators\CreateSubPageCommand::class,
         \Mlntn\Console\Commands\Serve::class,
         //
     ];
