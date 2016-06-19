@@ -9,7 +9,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng:subpage {name} {pageName}  {--path=}';
+    protected $signature = 'ng:subpage {name} {parent} {--path=}';
 
     /**
      * The console command description.
@@ -23,31 +23,19 @@ class CreateSubPageCommand extends BaseGeneratorCommand
      *
      * @return mixed
      */
-    public function handle()
-    {
+    public function handle() {
         $this->validateInput();
 
-        $pageName=$this->argument('pageName');
-        $name=$this->argument('name');
-         
-    /**
-     * Name of Subpage Component will be {pageName.name}  .. to prevent name collision.
-     */ 
-
-        $componentName = $pageName.ucfirst($name);
-
-     
-        $targetDir = $this->getTargetDir('pages'.'/'.$pageName,$name);
-        
-            
+        $parent = $this->argument('parent');
+        $subPageName = $this->argument('name');
+        $targetDir = $this->getTargetDir('pages/'.$parent, $subPageName);
         $type = 'component';
 
-        $this->createTs($componentName, $type, $targetDir.$componentName.'.component.ts');
-        $this->createHtml($componentName, $type, $targetDir.$componentName.'.component.html');
-        $this->createScss($componentName, $type, $targetDir.$componentName.'.component.scss');
-        $this->createSpec($componentName, $type, $targetDir.$componentName.'.spec.ts');
-        $this->createIndex($componentName, $type, $targetDir.'index.ts');
-        $this->updateUpIndex($name,$type,$targetDir);
-       
+        $this->createTs($subPageName, $type, $targetDir.$subPageName.'.component.ts');
+        $this->createHtml($subPageName, $type, $targetDir.$subPageName.'.component.html');
+        $this->createScss($subPageName, $type, $targetDir.$subPageName.'.component.scss');
+        $this->createSpec($subPageName, $type, $targetDir.$subPageName.'.spec.ts');
+        $this->createIndex($subPageName, $type, $targetDir.'index.ts');
+        $this->updateUpIndex($subPageName, $type, $targetDir);
     }
 }

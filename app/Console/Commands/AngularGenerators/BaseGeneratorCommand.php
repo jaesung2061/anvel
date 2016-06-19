@@ -4,10 +4,10 @@ namespace App\Console\Commands\AngularGenerators;
 
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 abstract class BaseGeneratorCommand extends Command
 {
@@ -26,10 +26,6 @@ abstract class BaseGeneratorCommand extends Command
      *
      * @param Filesystem $filesystem
      */
-
-
-
-    
     public function __construct(Filesystem $filesystem)
     {
         parent::__construct();
@@ -60,7 +56,6 @@ abstract class BaseGeneratorCommand extends Command
         $this->info("Generated {$this->normalize($path)}.");
     }
 
-
      /**
      * @param $name
      * @param $type
@@ -69,15 +64,22 @@ abstract class BaseGeneratorCommand extends Command
      * @throws FileNotFoundException
      */
 
-    public function updateUpIndex($name,$type,$path)
-    {
-        
-        $data="\n export * from './".$name."';";
-       File::append($path.'./../index.ts',$data,true);
-       $this->info("Updated {$this->normalize($path."./../index.ts")}.");
+    public function updateUpIndex($name, $type, $path) {
+        $indexPath = "$path/../index.ts";
+        $statement = "export * from './".$name."';\n";
+        $fileContent = File::get($indexPath);
+
+        // Clean up the new line characters as different operating
+        // systems put different characters for line breaks.
+        $fileContent = str_replace(["\r", "\n"], '', $fileContent);
+        $fileContent = explode(';', $fileContent);
+        $fileContent = implode(";\n", $fileContent);
+
+        File::delete($indexPath);
+        File::append($indexPath, $fileContent.$statement);
+
+        $this->info("Updated {$this->normalize($path."./../index.ts")}.");
     }
-
-
 
     /**
      * @param $name
@@ -167,7 +169,7 @@ abstract class BaseGeneratorCommand extends Command
 
         if (!File::exists($path)) {
             File::makeDirectory($path);
-            
+
         }
 
         return $path;

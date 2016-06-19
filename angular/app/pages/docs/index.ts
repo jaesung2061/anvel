@@ -1,5 +1,5 @@
 export * from './authentication';
 export * from './docs.component';
-export * from './broadcaster'
+export * from './broadcaster';
 export * from './routing';
 export * from './api';
