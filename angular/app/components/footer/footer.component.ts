@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'avl-footer',
-    template: require('html!./footer.component.html'),
-    styles: [require('!raw!sass!./footer.component.scss')]
+    template: require('./footer.component.html'),
+    styles: [require('./footer.component.scss')],
+    directives: [ ROUTER_DIRECTIVES ]
 })
 export class FooterComponent {
     constructor() {

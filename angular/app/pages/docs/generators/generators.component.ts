@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: require('./routing.component.md')
+    template: require('./generators.component.md')
 })
-export class RoutingComponent {
+export class GeneratorsComponent {
     constructor() {
     }
 }

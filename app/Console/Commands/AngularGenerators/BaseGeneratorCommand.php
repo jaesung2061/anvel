@@ -4,10 +4,10 @@ namespace App\Console\Commands\AngularGenerators;
 
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 abstract class BaseGeneratorCommand extends Command
 {
@@ -26,10 +26,6 @@ abstract class BaseGeneratorCommand extends Command
      *
      * @param Filesystem $filesystem
      */
-
-
-
-    
     public function __construct(Filesystem $filesystem)
     {
         parent::__construct();
@@ -41,11 +37,11 @@ abstract class BaseGeneratorCommand extends Command
      * @param $name
      * @param $type
      * @param $path
-     * @param array $options
+     * @param bool $routes
      * @throws Exception
      * @throws FileNotFoundException
      */
-    protected function createTs($name, $type, $path, $options = [])
+    protected function createTs($name, $type, $path, $routes = false)
     {
         // For use on component decorator to identify css and template path
         $cssPath = str_replace('angular/', '', str_replace('.ts', '.css', $this->normalize($path)));
@@ -53,13 +49,20 @@ abstract class BaseGeneratorCommand extends Command
         $upperCamelCaseName = str_replace('-', '', ucwords($name, '-_'));
 
         $content = $this->filesystem->get($this->stubsPath.$type.'.ts.blade.php');
-        $content = $this->compile($content, compact('name', 'type', 'upperCamelCaseName', 'cssPath', 'templatePath', 'options'));
+        $content = $this->compile($content, compact(
+            'name',
+            'type',
+            'upperCamelCaseName',
+            'cssPath',
+            'templatePath',
+            'options',
+            'routes'
+        ));
 
         $this->safePut($path, $content);
 
         $this->info("Generated {$this->normalize($path)}.");
     }
-
 
      /**
      * @param $name
@@ -69,27 +72,35 @@ abstract class BaseGeneratorCommand extends Command
      * @throws FileNotFoundException
      */
 
-    public function updateUpIndex($name,$type,$path)
-    {
-        
-        $data="\n export * from './".$name."';";
-       File::append($path.'./../index.ts',$data,true);
-       $this->info("Updated {$this->normalize($path."./../index.ts")}.");
+    public function updateUpIndex($name, $type, $path) {
+        $indexPath = "$path/../index.ts";
+        $statement = "export * from './".$name."';\n";
+        $fileContent = File::get($indexPath);
+
+        // Clean up the new line characters as different operating
+        // systems put different characters for line breaks.
+        $fileContent = str_replace(["\r", "\n"], '', $fileContent);
+        $fileContent = explode(';', $fileContent);
+        $fileContent = implode(";\n", $fileContent);
+
+        File::delete($indexPath);
+        File::append($indexPath, $fileContent.$statement);
+
+        $this->info("Updated {$this->normalize($path."./../index.ts")}.");
     }
-
-
 
     /**
      * @param $name
      * @param $type
      * @param $path
+     * @param bool $routes
      * @throws Exception
      * @throws FileNotFoundException
      */
-    protected function createHtml($name, $type, $path)
+    protected function createHtml($name, $type, $path, $routes = false)
     {
         $content = $this->filesystem->get($this->stubsPath.'html.blade.php');
-        $content = $this->compile($content, compact('name', 'type'));
+        $content = $this->compile($content, compact('name', 'type', 'routes'));
 
         $this->safePut($path, $content);
 
@@ -136,13 +147,14 @@ abstract class BaseGeneratorCommand extends Command
      * @param $name
      * @param $type
      * @param $path
+     * @param bool $routes
      * @throws Exception
      * @throws FileNotFoundException
      */
-    protected function createIndex($name, $type, $path)
+    protected function createIndex($name, $type, $path, $routes = false)
     {
         $content = $this->filesystem->get($this->stubsPath.'index.ts.blade.php');
-        $content = $this->compile($content, compact('name', 'type'));
+        $content = $this->compile($content, compact('name', 'type', 'routes'));
 
         $this->safePut($path, $content);
 
@@ -167,7 +179,7 @@ abstract class BaseGeneratorCommand extends Command
 
         if (!File::exists($path)) {
             File::makeDirectory($path);
-            
+
         }
 
         return $path;

@@ -2,8 +2,8 @@
 
 {{ '@Directive' }}({
     selector: '{{lcfirst($upperCamelCaseName) }}',
-    template: require('html!./{{ "$name.$type.html" }}'),
-    styles: [ require('!raw!sass!./{{ "$name.$type.scss" }}') ]
+    template: require('./{{ "$name.$type.html" }}'),
+    styles: [ require('./{{ "$name.$type.scss" }}') ]
 })
 export class {{ $upperCamelCaseName }}Directive {
     constructor() {

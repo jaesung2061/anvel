@@ -32,7 +32,11 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ['raw', 'style', 'css?sourceMap', 'sass?sourceMap']
+                loader: 'raw!sass?sourceMap'
+            },
+            {
+                test: /\.html$/,
+                loader: 'html'
             },
             {
                 test: /\.md$/,
