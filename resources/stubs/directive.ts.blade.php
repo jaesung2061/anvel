@@ -1,4 +1,4 @@
-@if(!$options['attribute'])import { Directive } from '{{ '@angular/core' }}';
+@if(isset($options['attribute']))import { Directive } from '{{ '@angular/core' }}';
 
 {{ '@Directive' }}({
     selector: '{{lcfirst($upperCamelCaseName) }}',
@@ -9,7 +9,7 @@ export class {{ $upperCamelCaseName }}Directive {
     constructor() {
     }
 }
-@elseif($options['attribute'])import { Directive } from '{{ '@angular/core' }}';
+@else import { Directive } from '{{ '@angular/core' }}';
 
 {{ '@Directive' }}({selector: '[{{ lcfirst($upperCamelCaseName) }}]'})
 export class {{ $upperCamelCaseName }}Directive {
