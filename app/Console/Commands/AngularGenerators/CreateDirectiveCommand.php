@@ -9,7 +9,7 @@ class CreateDirectiveCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'ng:directive {name} {--attribute=true} {--path=}';
+    protected $signature = 'ng:directive {name} {--path=}';
 
     /**
      * The console command description.
@@ -32,7 +32,7 @@ class CreateDirectiveCommand extends BaseGeneratorCommand
         $isAttributeDirective = filter_var($this->option('attribute'), FILTER_VALIDATE_BOOLEAN);
         $type = 'directive';
 
-        $this->createTs($directiveName, $type, $targetDir.$directiveName.'.directive.ts', ['attribute' => $isAttributeDirective]);
+        $this->createTs($directiveName, $type, $targetDir.$directiveName.'.directive.ts');
         $this->createSpec($directiveName, $type, $targetDir.$directiveName.'.spec.ts');
         $this->createIndex($directiveName, $type, $targetDir.'index.ts');
         $this->updateUpIndex($directiveName, $type, $targetDir);
