@@ -1,6 +1,7 @@
 /.idea
 /vendor
 /node_modules
+/typings
 
 /public/assets
 /public/app
