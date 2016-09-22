@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { Auth, Broadcaster, Config } from './services';
-import { FooterComponent, LoginComponent, NavbarComponent } from './components';
+import { Auth, Broadcaster } from './services';
 import { EVENTS } from './events';
 
 @Component({
     selector: 'avl-app',
     template: require('./app.component.html'),
     styles: [ require('./app.component.scss') ],
-    directives: [ NavbarComponent, LoginComponent, FooterComponent, Router ]
 })
 export class AppComponent implements OnInit {
     currentUser;
