@@ -10,6 +10,4 @@ export const AppRoutes: Routes = [
     { path: 'about', component: AboutComponent },
 ];
 
-export const routing: ModuleWithProviders = [
-    RouterModule.forRoot(AppRoutes)
-];
+export const routing: ModuleWithProviders = RouterModule.forRoot(AppRoutes);
