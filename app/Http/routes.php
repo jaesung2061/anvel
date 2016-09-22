@@ -1,8 +1,9 @@
 <?php
 
+/* @var $api Dingo\Api\Routing\Router */
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['middleware' => 'cors'], function ($api) {
+$api->version('v1', ['middleware' => 'cors'], function (Dingo\Api\Routing\Router $api) {
     // All routes in this callback is prefixed by "/api"
     // To change this, go to .env
 

@@ -26,7 +26,7 @@ Now let's open `./angular/app/app.routes.ts` and register the route.
 
     import { ContactComponent } from './pages/contact';
 
-    export const routes: RouterConfig = [
+    export const AppRoutes: Routes = [
         // ...
         { path: 'contact', component: ContactComponent }
     ];
@@ -55,8 +55,7 @@ run the following command:
 This will create the relevant files and in addition, create `contact.routes.ts`
 with them. You need to register `ContactRoutes` in the `app.routes.ts` file.
 
-    export const AppRoutes: RouterConfig = [
+    export const AppRoutes: Routes = [
         { path: '', component: HomeComponent },
         ...DocsRoutes,
     ];
-

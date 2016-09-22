@@ -67,7 +67,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    request(url: any, options?: any) {
+    request(url: any, options: any = {}) {
         if (url.constructor === String) {
             options = this.prepareApiRequest(options);
         } else {
@@ -88,7 +88,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    get(url: string, options?: any) {
+    get(url: string, options: any = {}) {
         if (options && (options.data || options.search)) {
             options.search = this.serialize(options.data || options.search);
         }
@@ -110,7 +110,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    post(url: string, data: any, options?: any) {
+    post(url: string, data: any = {}, options: any = {}) {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
@@ -133,7 +133,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    put(url: string, data: any, options?: any) {
+    put(url: string, data: any = {}, options: any = {}) {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
@@ -155,7 +155,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    delete(url: string, options?: any) {
+    delete(url: string, options: any = {}) {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
@@ -174,7 +174,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    patch(url: string, data: string, options?: any) {
+    patch(url: string, data: any = {}, options: any = {}) {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
@@ -196,7 +196,7 @@ export class Api {
      * @param options
      * @returns {Observable<R>}
      */
-    head(url: string, options?: any) {
+    head(url: string, options: any = {}) {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
@@ -242,7 +242,11 @@ export class Api {
      * @returns {string}
      */
     private getBuiltUrl(url): string {
-        return (this.baseUrl + '/' + url).replace(/\/\//g, '/');
+        if (url.startsWith('/') && this.baseUrl.endsWith('/')) {
+            url = url.substr(1);
+        }
+
+        return this.baseUrl + url;
     }
 
     /**
@@ -274,7 +278,7 @@ export class Api {
      * @param prefix
      * @returns {URLSearchParams}
      */
-    private serialize(obj: Object, prefix?: string): URLSearchParams {
+    private serialize(obj: Object, prefix: string = ''): URLSearchParams {
         let str = [];
 
         for (let p in obj) {

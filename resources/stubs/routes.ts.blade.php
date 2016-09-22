@@ -1,8 +1,8 @@
-import { RouterConfig } from '{{ '@' }}angular/router';
+import { Routes } from '@angular/router';
 
 import { {{ $upperCamelCaseName }}Component } from './{{ $name }}.component';
 
-export const {{ $upperCamelCaseName }}Routes: RouterConfig = [
+export const {{ $upperCamelCaseName }}Routes: Routes = [
     {
         path: '{{ $name }}',
         component: {{ $upperCamelCaseName }}Component,

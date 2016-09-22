@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: require('./api.component.md')
+    template: `<div [innerHTML]="docs"></div>`,
 })
 export class ApiComponent {
+    public docs = require('./api.component.md');
+
     constructor() {
     }
 }
