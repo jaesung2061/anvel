@@ -242,7 +242,7 @@ export class Api {
      * @returns {string}
      */
     private getBuiltUrl(url): string {
-        if (url.startsWith('/') && ! this.baseUrl.endsWith('/')) {
+        if (url.startsWith('/') && this.baseUrl.endsWith('/')) {
             url = url.substr(1);
         }
 
