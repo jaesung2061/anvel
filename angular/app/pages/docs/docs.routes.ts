@@ -1,4 +1,4 @@
-import { RouterConfig } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { ApiComponent } from './api';
 import { AuthenticationComponent } from './authentication';
@@ -7,7 +7,7 @@ import { RoutingComponent } from './routing';
 import { GeneratorsComponent } from './generators';
 import { DocsComponent } from './docs.component';
 
-export const DocsRoutes: RouterConfig = [
+export const DocsRoutes: Routes = [
     {
         path: 'docs',
         component: DocsComponent,

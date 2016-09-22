@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: require('./generators.component.md')
+    template: `<div [innerHTML]="docs"></div>`
 })
 export class GeneratorsComponent {
+    public docs = require('./generators.component.md');
+
     constructor() {
     }
 }

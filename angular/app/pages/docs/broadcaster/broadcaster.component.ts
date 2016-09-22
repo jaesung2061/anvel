@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: require('./broadcaster.component.md')
+    template: `<div [innerHTML]="docs"></div>`
 })
 export class BroadcasterComponent {
+    public docs = require('./broadcaster.component.md');
+
     constructor() {
     }
 }
