@@ -11,7 +11,7 @@
 
 Go to [http://localhost:8000](http://localhost:8000).
 
-Visit [http://anvel.io](anvel.io) for some brief documentation.
+Visit http://anvel.io for some brief documentation.
 
 ---
 
