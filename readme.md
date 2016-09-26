@@ -1,5 +1,14 @@
 ## Configured Lumen and Angular 2 starter kit
 
+### The Stack
+
+- [Angular 2](https://angular.io)
+    - [Ng2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap/)
+    - [Webpack](https://webpack.github.io/)
+- [Lumen 5.3](https://lumen.laravel.com)
+    - [Dingo API](https://github.com/dingo/api)
+    - [JWT Auth](https://github.com/tymondesigns/jwt-auth)
+
 ### Installation
 
     $ composer create-project jaesung2061/anvel
