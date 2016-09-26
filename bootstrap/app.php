@@ -1,7 +1,5 @@
 <?php
 
-const APP_ROOT = __DIR__.'/../';
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 try {
@@ -93,7 +91,7 @@ $app->configure('cors');
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
 // Do not give explicit error messages to client in production.
-if (env('APP_ENV') === 'local' || env('APP_ENV') === 'staging') {
+if (! app()->environment('production')) {
     $app[Dingo\Api\Exception\Handler::class]->setErrorFormat([
         'error' => [
             'message'     => ':message',
