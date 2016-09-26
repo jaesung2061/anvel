@@ -6,24 +6,14 @@
     $ cd anvel
     $ npm install -g webpack
     $ npm install
-
-If you have a web server set up already, open `.env` and set `BROWSERSYNC_PROXY_URL` to the
-correct url. If not, run the following command.
-
+    $ webpack
     $ php artisan serve
 
-**Note**: If you installed Anvel by a method other than `composer require` you must
-create a `.env` file and copy the contents of `.env.example` into it.
-
-Open a new terminal and run the following command.
-
-    $ npm start
-
-The website should automatically launch at [http://localhost:3000](localhost:3000)
-(proxied to localhost:8000). If localhost:3000 does not work, try
-[http://localhost:8000](localhost:8000).
+Go to [http://localhost:8000](http://localhost:8000).
 
 Visit [http://anvel.io](anvel.io) for some brief documentation.
+
+---
 
 ### Why not Laravel?
 
