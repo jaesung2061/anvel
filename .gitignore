@@ -1,10 +1,10 @@
-/.idea
-/vendor
+/public/assets
 /node_modules
 /typings
+/vendor
+/.idea
 
-/public/assets
-/public/app
-
-.env
+Homestead.json
+Homestead.yaml
 npm-debug.log
+.env
