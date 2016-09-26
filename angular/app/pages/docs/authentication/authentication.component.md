@@ -19,6 +19,8 @@ handled within the component and with the Lumen API. If your
 database is set up already with a user stored, simply put in
 the correct credentials and submit.
 
+---
+
 ### Styling The Form
 
 If you would like to style the login form, feel free to edit the
