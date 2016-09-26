@@ -1,5 +1,3 @@
-## Configured Lumen and Angular 2 starter kit
-
 ### Installation
 
     $ composer create-project jaesung2061/anvel
