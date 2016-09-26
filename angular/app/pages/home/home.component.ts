@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'avl-home',
     template: require('./home.component.html'),
-    styles: [require('./home.component.scss')],
+    styles: [ require('./home.component.scss') ],
 })
 export class HomeComponent {
     installationDocs = require('./readme.md');
