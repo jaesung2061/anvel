@@ -12,7 +12,7 @@ $api->version('v1', ['middleware' => 'cors'], function (Dingo\Api\Routing\Router
     $api->get('auth', 'App\Http\Controllers\AuthController@verify');
     $api->delete('auth', 'App\Http\Controllers\AuthController@destroy');
 
-    // The following command will create these routes.
+    // The following call will create these routes.
     //   - GET    /api/users
     //   - POST   /api/users
     //   - PATCH  /api/users/{id}
