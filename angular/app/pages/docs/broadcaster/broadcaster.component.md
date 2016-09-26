@@ -8,17 +8,6 @@ can listen to any event.
 
 ---
 
-### Injecting the Service
-
-    import { Broadcaster } from 'relative/path/to/services/broadcaster'
-    
-    @Component(...)
-    class MyComponent {
-        constructor(private broadcaster: Broadcaster) {}
-    }
-
----
-
 ### Broadcasting an Event
 
     this.broadcaster.broadcast('my-event', 'hello subscriber');
@@ -31,6 +20,8 @@ can listen to any event.
     this.broadcaster.subscribe('my-event', function (data) {
         console.log(data); // 'hello subscriber'
     });
+
+---
 
 ### Event Constants
 

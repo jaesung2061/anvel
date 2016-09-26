@@ -10,7 +10,7 @@
 If you have a web server set up already, open `.env` and set `BROWSERSYNC_PROXY_URL` to the
 correct url. If not, run the following command.
 
-    php artisan serve
+    $ php artisan serve
 
 **Note**: If you installed Anvel by a method other than `composer require` you must
 create a `.env` file and copy the contents of `.env.example` into it.
