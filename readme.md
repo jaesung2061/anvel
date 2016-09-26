@@ -19,8 +19,10 @@ Open a new terminal and run the following command.
 
     $ npm start
 
-The website should automatically launch at http://localhost:3000 (proxied). Visit
-http://anvel.io for some brief documentation.
+The website should automatically launch at [http://localhost:3000](http://localhost:3000) (proxied). If localhost:3000
+does not work, try [http://localhost:8000](http://localhost:8000).
+
+Visit [http://anvel.io](anvel.io) for some brief documentation.
 
 ### Why not Laravel?
 
