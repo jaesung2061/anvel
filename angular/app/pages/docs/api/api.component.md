@@ -5,19 +5,7 @@ The Api service is a wrapper around the Angular 2 Http Client which handles
 some of the lower level things that you shouldn't have to deal with. It
 also integrates into Lumen's API.
 
-Note: You must call `.subscribe()` for the request to be sent.
-
-Injecting the Api service.
-
-    import { Api } from 'relative/path/to/api.service.ts';
-
-    @Component({
-        ...
-        services: [ Api ]
-    })
-    class AppComponent {
-        constructor(private api: Api) {}
-    }
+> **Note**: The Api service expects responses in the form of `{data: content}` instead of just `content`.
 
 ---
 
@@ -31,6 +19,8 @@ Injecting the Api service.
         },
         (error) => console.error(error)
     );
+
+> **Note**: You must call `.subscribe()` for the request to be sent.
 
 ---
 
