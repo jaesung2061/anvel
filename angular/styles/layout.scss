@@ -1,0 +1,26 @@
+@import './variables';
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+#navbar {
+  margin-bottom: 1rem;
+}
+
+.Page {
+  padding-bottom: $footerHeight;
+}
+
+#footer {
+  background-color: #eee;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footerHeight;
+  line-height: $footerHeight;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
