@@ -29,7 +29,7 @@ import {
         BrowserModule,
         HttpModule,
         FormsModule,
-        routing
+        routing,
     ],
     declarations: [
         AppComponent,

@@ -74,7 +74,6 @@ export class Api {
             url.url = this.baseUrl + '/' + url;
         }
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .request(this.getBuiltUrl(url), options)
             .map(this.extractData)
@@ -95,7 +94,6 @@ export class Api {
 
         options = this.prepareApiRequest(options);
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .get(this.getBuiltUrl(url), options)
             .map(this.extractData)
@@ -118,7 +116,6 @@ export class Api {
             data = JSON.stringify(data);
         }
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .post(this.getBuiltUrl(url), data, options)
             .map(this.extractData)
@@ -141,7 +138,6 @@ export class Api {
             data = JSON.stringify(data);
         }
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .put(this.getBuiltUrl(url), data, options)
             .map(this.extractData)
@@ -159,7 +155,6 @@ export class Api {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .delete(this.getBuiltUrl(url), options)
             .map(this.extractData)
@@ -182,7 +177,6 @@ export class Api {
             data = JSON.stringify(data);
         }
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .patch(this.getBuiltUrl(url), data, options)
             .map(this.extractData)
@@ -200,7 +194,6 @@ export class Api {
         options = this.prepareApiRequest(options);
         options.headers.append('Content-Type', 'application/json');
 
-        //noinspection TypeScriptUnresolvedFunction
         return this.http
             .head(this.getBuiltUrl(url), options)
             .map(this.extractData)

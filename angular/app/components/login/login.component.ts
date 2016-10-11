@@ -5,7 +5,7 @@ import { Auth } from '../../services';
 @Component({
     selector: 'avl-login',
     template: require('./login.component.html'),
-    styles: [ require('./login.component.scss') ]
+    styles: [ require('./login.component.scss') ],
 })
 export class LoginComponent {
     credentials = {};

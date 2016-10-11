@@ -7,7 +7,7 @@ import { RoutingComponent } from './routing';
 import { GeneratorsComponent } from './generators';
 import { DocsComponent } from './docs.component';
 
-export const DocsRoutes: Routes = [
+export const docsRoutes: Routes = [
     {
         path: 'docs',
         component: DocsComponent,
@@ -18,7 +18,7 @@ export const DocsRoutes: Routes = [
             {path: 'authentication', component: AuthenticationComponent},
             {path: 'broadcaster', component: BroadcasterComponent},
             {path: 'routing', component: RoutingComponent},
-            {path: 'generators', component: GeneratorsComponent}
-        ]
+            {path: 'generators', component: GeneratorsComponent},
+        ],
     },
 ];

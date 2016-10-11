@@ -5,5 +5,5 @@ export const EVENTS = {
         LOGOUT_SUCCESS: 'auth-logout-success',
         LOGOUT_FAILURE: 'auth-logout-failure',
         SESSION_TIMEOUT: 'auth-session-timeout',
-    }
+    },
 };

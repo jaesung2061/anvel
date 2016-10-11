@@ -12,6 +12,12 @@ module.exports = {
         extensions: ['', '.js', '.ts']
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.ts$/,
+                loader: "tslint"
+            }
+        ],
         loaders: [
             {
                 test: /\.ts$/,
