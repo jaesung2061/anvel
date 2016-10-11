@@ -12,14 +12,6 @@ module.exports = merge(common, {
     cache: true,
     devtool: 'source-map',
     plugins: [
+        //
     ],
-    devServer: {
-        port: 8080,
-        proxy: {'*': 'http://anvel.app:8000'},
-        historyApiFallback: true,
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-        }
-    }
 });
