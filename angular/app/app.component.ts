@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
         // highest level since we will likely be using
         // the user object all throughout the application.
         this.broadcaster.subscribe(EVENTS.AUTH.LOGIN_SUCCESS, (data) => {
-            console.log(data);
             this.currentUser = data.user;
         });
 
