@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { Auth } from '../../services';
 
@@ -9,6 +10,7 @@ import { Auth } from '../../services';
 })
 export class LoginComponent {
     credentials = {};
+    loginForm = new FormControl('loginForm');
 
     constructor(private auth: Auth) {
     }

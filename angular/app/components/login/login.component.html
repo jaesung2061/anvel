@@ -2,13 +2,13 @@
     <label class="form-group">
         Email
         <input class="form-control" type="email" [(ngModel)]="credentials.email"
-               ngControl="email"  #name="ngForm" required>
+               ngControl="email" name="email" #name="ngModel" required>
     </label>
 
     <label class="form-group">
         password
         <input class="form-control" type="password" [(ngModel)]="credentials.password"
-               ngControl="password"  #name="ngForm" required>
+               ngControl="password" name="password" #name="ngModel" required>
     </label>
 
     <div class="text-xs-right">
