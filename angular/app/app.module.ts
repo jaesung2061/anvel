@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routes';
-import { FooterComponent, NavbarComponent } from './components';
+import { FooterComponent, LoginComponent, NavbarComponent } from './components';
 import {
     AboutComponent,
     DocsComponent,
@@ -36,8 +36,9 @@ import {
         AboutComponent,
         DocsComponent,
         HomeComponent,
-        NavbarComponent,
         FooterComponent,
+        LoginComponent,
+        NavbarComponent,
         ApiComponent,
         AuthenticationComponent,
         BroadcasterComponent,

@@ -64,7 +64,6 @@ export class Auth {
         this.api.addDefaultHeader('Authorization', 'Bearer ' + response.token);
 
         localStorage.setItem('token', response.token || localStorage.getItem('token'));
-
     }
 
     private authFailureTasks(error: any) {

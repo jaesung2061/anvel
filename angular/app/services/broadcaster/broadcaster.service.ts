@@ -32,7 +32,7 @@ export class Broadcaster {
      * @param event
      * @param data
      */
-    broadcast(event: string, data: any = undefined) {
+    broadcast(event: string, data: any) {
         let handlers = this.subscriptions[ event ];
 
         if (handlers) {

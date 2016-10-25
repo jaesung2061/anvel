@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
         // On login success event, set currentUser at
         // highest level since we will likely be using
         // the user object all throughout the application.
-        this.broadcaster.subscribe(EVENTS.AUTH.LOGIN_SUCCESS, function (data) {
+        this.broadcaster.subscribe(EVENTS.AUTH.LOGIN_SUCCESS, (data) => {
+            console.log(data);
             this.currentUser = data.user;
         });
 
@@ -29,10 +30,7 @@ export class AppComponent implements OnInit {
         // send request to server to verify and
         // get user object.
         if (token) {
-            this.auth.verify(token).subscribe(
-                (response) => this.currentUser = response,
-                () => localStorage.removeItem('token')
-            );
+            this.auth.verify(token).subscribe((response) => this.currentUser = response);
         }
     }
 }
