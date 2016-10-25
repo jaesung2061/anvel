@@ -14,7 +14,7 @@ use Tymon\JWTAuth\JWTAuth;
  */
 class AuthController extends Controller
 {
-    use Helpers;
+//    use Helpers;
 
     /**
      * @var JWTAuth
@@ -63,6 +63,6 @@ class AuthController extends Controller
         }
 
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        return response()->json(['data' => compact('user')]);
     }
 }
