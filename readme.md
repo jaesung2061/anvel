@@ -1,6 +1,12 @@
-## Configured Lumen and Angular 2 starter kit
+## Configured Lumen and Angular 2 starter kit.
+
+---
+
+Get started quickly with the future of front-end development and a blazing fast micro-framework. Packaged nicely for kickstarting development.
 
 ### The Stack
+
+---
 
 - [Angular 2](https://angular.io)
     - [Ng2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap/)
@@ -10,6 +16,8 @@
     - [JWT Auth](https://github.com/tymondesigns/jwt-auth)
 
 ### Installation
+
+---
 
     $ composer create-project jaesung2061/anvel
     $ cd anvel
@@ -22,9 +30,9 @@ Go to [http://localhost:8000](http://localhost:8000).
 
 Visit http://anvel.io for some brief documentation.
 
----
-
 ### Why not Laravel?
+
+---
 
 Since we will be using a client-side framework, the server will act only as a REST-API.
 With such a setup, it is not necessary to have a full-fledged framework like Laravel.
