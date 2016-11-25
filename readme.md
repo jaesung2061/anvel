@@ -1,10 +1,10 @@
-## Configured Lumen and Angular 2 starter kit.
+# Configured Lumen and Angular 2 starter kit.
 
 ---
 
 Get started quickly with the future of front-end development and a blazing fast micro-framework. Packaged nicely for kickstarting development.
 
-### The Stack
+# The Stack
 
 ---
 
@@ -15,7 +15,7 @@ Get started quickly with the future of front-end development and a blazing fast 
     - [Dingo API](https://github.com/dingo/api)
     - [JWT Auth](https://github.com/tymondesigns/jwt-auth)
 
-### Installation
+# Installation
 
 ---
 
@@ -30,7 +30,7 @@ Go to [http://localhost:8000](http://localhost:8000).
 
 Visit http://anvel.io for some brief documentation.
 
-### Why not Laravel?
+# Why not Laravel?
 
 ---
 
