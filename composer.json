@@ -8,8 +8,8 @@
         "php": ">=5.6.4",
         "laravel/lumen-framework": "5.3.*",
         "vlucas/phpdotenv": "~2.2",
-        "dingo/api": "1.0.x@dev",
-        "tymon/jwt-auth": "1.0.0-alpha.3",
+        "dingo/api": "^1.0.0-beta6",
+        "tymon/jwt-auth": "^1.0.0-beta.1",
         "barryvdh/laravel-cors": "^0.8.0",
         "mlntn/lumen-artisan-serve": "~1"
     },
