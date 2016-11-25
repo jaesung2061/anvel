@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routes';
@@ -29,6 +30,7 @@ import {
         BrowserModule,
         HttpModule,
         FormsModule,
+        NgbModule.forRoot(),
         routing,
     ],
     declarations: [
