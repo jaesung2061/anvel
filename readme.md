@@ -1,4 +1,4 @@
-# Configured Lumen and Angular 2 starter kit.
+# Configured Lumen and Angular 2 starter kit
 
 ---
 
