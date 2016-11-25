@@ -7,7 +7,7 @@ also integrates into Lumen's API.
 
 ### API Response Structure
 
-The Api service expects responses in the form of `{data: content}` instead of just `content`.
+The Api service expects *all* responses in the form of `{data: content}` instead of just `content`.
 
     // Correct response structure:
     {
