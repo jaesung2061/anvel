@@ -5,6 +5,8 @@ The Api service is a wrapper around the Angular 2 Http Client which handles
 some of the lower level things that you shouldn't have to deal with. It
 also integrates into Lumen's API.
 
+---
+
 ### API Response Structure
 
 The Api service expects *all* responses in the form of `{data: content}` instead of just `content`.
