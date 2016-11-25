@@ -11,6 +11,7 @@ import { Auth } from '../../services';
 export class LoginComponent {
     credentials = {};
     loginForm = new FormControl('loginForm');
+    error = false;
 
     constructor(private auth: Auth) {
     }
@@ -21,7 +22,8 @@ export class LoginComponent {
                 console.log('Login success.');
             },
             (error) => {
-                console.log(error);
+                this.error = true;
+                console.error(error);
             }
         );
     }

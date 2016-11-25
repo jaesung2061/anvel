@@ -1,4 +1,8 @@
-<form (ngSubmit)="login(credentials)" #heroForm="ngForm">
+<form (ngSubmit)="login(credentials)" #heroForm="ngForm" novalidate>
+    <ngb-alert type="danger" [dismissible]="false" *ngIf="error">
+        <span>The email/password you provided does not match our records.</span>
+    </ngb-alert>
+
     <label class="form-group">
         Email
         <input class="form-control" type="email" [(ngModel)]="credentials.email"
