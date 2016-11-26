@@ -16,7 +16,7 @@ class CreatePageCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create component files for Angular 2.';
+    protected $description = 'Create page files for Angular 2.';
 
     /**
      * Execute the console command.

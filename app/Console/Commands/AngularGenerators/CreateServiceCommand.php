@@ -16,7 +16,7 @@ class CreateServiceCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create directive files for Angular 2.';
+    protected $description = 'Create service files for Angular 2.';
 
     /**
      * Execute the console command.

@@ -16,7 +16,7 @@ class CreateSubPageCommand extends BaseGeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create component files for Angular 2 Sub Page.';
+    protected $description = 'Create sub-page files for Angular 2.';
 
     /**
      * Execute the console command.
