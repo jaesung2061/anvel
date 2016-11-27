@@ -5,7 +5,7 @@ import '!style!css!sass!loaders.css/loaders.css';
 
 // This will be automatically copied from the node_modules directory
 // after npm install. To run it manually, run "npm run bootstrap"
-// or simply copy the folder and paste in the corrext place.
+// or simply copy the folder and paste in the correct place.
 import '!style!css!sass!./styles/bootstrap/bootstrap-flex.scss';
 
 // Application styles.
