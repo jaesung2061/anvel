@@ -2,10 +2,6 @@
 
 // Vendor styles
 import '!style!css!sass!loaders.css/loaders.css';
-
-// This will be automatically copied from the node_modules directory
-// after npm install. To run it manually, run "npm run bootstrap"
-// or simply copy the folder and paste in the corrext place.
 import '!style!css!sass!bootstrap/scss/bootstrap-flex.scss';
 
 // Application styles.
