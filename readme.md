@@ -20,7 +20,7 @@ Get started quickly with the future of front-end development and a blazing fast 
     $ webpack
     $ php artisan serve
 
-> **Note**: If you are on Windows, you must manually copy `node_modules/bootstrap/scss` to `angular/styles/scss` and rename the `scss` directory to `bootstrap`. Run `webpack` after copying.
+> **Note**: If you are on Windows, you must manually copy `node_modules/bootstrap/scss` to `angular/styles` and rename the `scss` directory to `bootstrap`.
 
 Go to [http://localhost:8000](http://localhost:8000).
 

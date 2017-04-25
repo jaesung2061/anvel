@@ -14,7 +14,7 @@ use Tymon\JWTAuth\JWTAuth;
  */
 class AuthController extends Controller
 {
-//    use Helpers;
+    //    use Helpers;
 
     /**
      * @var JWTAuth

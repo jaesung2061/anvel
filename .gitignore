@@ -1,10 +1,5 @@
-/public/assets
-/node_modules
-/typings
 /vendor
 /.idea
-
 Homestead.json
 Homestead.yaml
-npm-debug.log
 .env

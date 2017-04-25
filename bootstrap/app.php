@@ -1,10 +1,12 @@
 <?php
 
 require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/helpers.php';
 
 try {
     (new Dotenv\Dotenv(__DIR__.'/../'))->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
+}
+catch (Dotenv\Exception\InvalidPathException $e) {
     //
 }
 
@@ -67,6 +69,9 @@ $app->singleton(
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+$app->alias('cache', 'Illuminate\Cache\CacheManager');
+$app->alias('auth', 'Illuminate\Auth\AuthManager');
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -78,27 +83,24 @@ $app->singleton(
 |
 */
 
-$app->register(App\Providers\AppServiceProvider::class);
+// $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
-$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
-$app->configure('jwt');
-
-$app->register(Barryvdh\Cors\LumenServiceProvider::class);
-$app->configure('cors');
-
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
+$app->register(\Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
+$app->configure('jwt');
+
 // Do not give explicit error messages to client in production.
-if (! app()->environment('production')) {
+if ( ! app()->environment('production')) {
     $app[Dingo\Api\Exception\Handler::class]->setErrorFormat([
         'error' => [
-            'message'     => ':message',
-            'errors'      => ':errors',
-            'code'        => ':code',
+            'message' => ':message',
+            'errors' => ':errors',
+            'code' => ':code',
             'status_code' => ':status_code',
-            'debug'       => ':debug'
+            'debug' => ':debug'
         ]
     ]);
 }
@@ -109,24 +111,20 @@ app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
 
 /*
 |--------------------------------------------------------------------------
-| Handle Exceptions
+| Facades
 |--------------------------------------------------------------------------
 |
-| Register all custom exception handlers here. For more information
-| and documentation, please visit the following link.
-|
-| https://github.com/dingo/api/wiki/Errors-And-Error-Responses
+| Here you may register facades.
 |
 */
-app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-    return response()->json(['error' => 'token_expired'], $e->getCode() ?: 401);
-});
-app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\TokenInvalidException  $e) {
-    return response()->json(['error' => 'token_invalid'], $e->getCode() ?: 401);
-});
-app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\JWTException $e) {
-    return response()->json(['error' => 'token_absent'], $e->getCode() ?: 401);
-});
+
+if ( ! class_exists('JWTAuth')) {
+    class_alias('Tymon\JWTAuth\Facades\JWTAuth', 'JWTAuth');
+}
+
+if ( ! class_exists('JWTAuth')) {
+    class_alias('Tymon\JWTAuth\Facades\JWTFactory', 'JWTFactory');
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -140,7 +138,26 @@ app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions
 */
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__.'/../app/Http/routes.php';
+    require __DIR__.'/../routes/web.php';
+});
+
+/*
+|--------------------------------------------------------------------------
+| Exception handlers
+|--------------------------------------------------------------------------
+|
+| Hear we can configure how errors are handled.
+|
+*/
+
+app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+    return response()->json(['error' => 'token_expired'], $e->getCode() ?: 401);
+});
+app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+    return response()->json(['error' => 'token_invalid'], $e->getCode() ?: 401);
+});
+app('Dingo\Api\Exception\Handler')->register(function (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+    return response()->json(['error' => 'token_absent'], $e->getCode() ?: 401);
 });
 
 return $app;
