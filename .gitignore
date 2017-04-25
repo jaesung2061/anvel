@@ -4,5 +4,7 @@ Homestead.json
 Homestead.yaml
 .env
 
+/public/assets
+
 node_modules
 npm-debug.log
