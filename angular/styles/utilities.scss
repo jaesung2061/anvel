@@ -1,0 +1,31 @@
+// NgForm styles
+label.form-group {
+  display: block;
+}
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}
+
+// Site loading animation
+.site-loader-cover {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #555;
+}

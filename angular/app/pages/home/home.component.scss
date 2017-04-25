@@ -1,0 +1,33 @@
+.jumbotron {
+    margin-bottom: 0;
+}
+
+#git-fork-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 1001;
+}
+
+.section-1 {
+    margin: -1rem 0;
+    padding: 8rem 0;
+    background-color: #fff;
+    background-image: url(/images/home-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50%;
+    width: 100%;
+    color: #eee;
+}
+
+.section-2 {
+    margin-top: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.section-3 {
+    background-color: #fff;
+    //
+}

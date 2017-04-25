@@ -1,0 +1,19 @@
+<div class="Page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Documentation</h4>
+                <ul>
+                    <li><a [routerLink]="['api']">API Communication</a></li>
+                    <li><a [routerLink]="['authentication']">Authentication</a></li>
+                    <li><a [routerLink]="['broadcaster']">Broadcaster</a></li>
+                    <li><a [routerLink]="['routing']">Routing</a></li>
+                    <li><a [routerLink]="['generators']">Generators</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

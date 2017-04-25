@@ -1,0 +1,50 @@
+{
+  "name": "webpack-stream",
+  "version": "3.2.0",
+  "description": "Run webpack as a stream",
+  "license": "MIT",
+  "homepage": "https://github.com/shama/webpack-stream",
+  "repository": "shama/webpack-stream",
+  "author": {
+    "name": "Kyle Robinson Young",
+    "email": "kyle@dontkry.com",
+    "url": "http://dontkry.com"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "semistandard && node test/test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "semistandard": {
+    "ignore": [
+      "test/fixtures",
+      "examples"
+    ]
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "lodash.clone": "^4.3.2",
+    "lodash.some": "^4.2.2",
+    "memory-fs": "^0.3.0",
+    "through": "^2.3.8",
+    "vinyl": "^1.1.0",
+    "webpack": "^1.12.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "rimraf": "^2.4.4",
+    "semistandard": "^7.0.4",
+    "tape": "^4.2.2",
+    "vinyl-fs": "^2.2.1",
+    "vinyl-named": "^1.1.0"
+  },
+  "keywords": [
+    "gulpplugin",
+    "webpack",
+    "stream"
+  ]
+}
