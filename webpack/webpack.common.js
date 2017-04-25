@@ -8,16 +8,7 @@ module.exports = {
         vendor: resolve('./angular/vendor.ts'),
         styles: resolve('./angular/styles.ts')
     },
-    resolve: {
-        extensions: ['', '.js', '.ts']
-    },
     module: {
-        preLoaders: [
-            // {
-            //     test: /\.ts$/,
-            //     loader: "tslint"
-            // }
-        ],
         loaders: [
             {
                 test: /\.ts$/,
@@ -51,6 +42,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('commons.chunk.js', ['main', 'vendor'])
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['main', 'vendor'],
+            filename: 'commons.chunk.js',
+        })
     ]
 };
