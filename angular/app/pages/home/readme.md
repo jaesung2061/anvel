@@ -18,7 +18,7 @@
     $ npm install -g webpack
     $ npm install
     $ webpack
-    $ php artisan serve
+    $ php -S localhost:8000 -t public
 
 Go to [http://localhost:8000](http://localhost:8000).
 

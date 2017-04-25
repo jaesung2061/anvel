@@ -18,7 +18,7 @@ Get started quickly with the future of front-end development and a blazing fast 
     $ npm install -g webpack
     $ npm install
     $ webpack
-    $ php artisan serve
+    $ php -S localhost:8000 -t public
 
 > **Note**: If you are on Windows, you must manually copy `node_modules/bootstrap/scss` to `angular/styles` and rename the `scss` directory to `bootstrap`.
 
