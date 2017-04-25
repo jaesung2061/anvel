@@ -1,1 +1,0 @@
-declare var APP_ENVIRONMENT: any;

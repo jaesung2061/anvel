@@ -1,34 +1,21 @@
-# Configured Lumen and Angular 2 starter kit
+# Lumen PHP Framework
 
-Get started quickly with the future of front-end development and a blazing fast micro-framework. Packaged nicely for kickstarting development.
+[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
+[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 
-# The Stack
+Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
 
-- [Angular 2](https://angular.io)
-    - [Ng2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap/)
-    - [Webpack](https://webpack.github.io/)
-- [Lumen 5.3](https://lumen.laravel.com)
-    - [Dingo API](https://github.com/dingo/api)
-    - [JWT Auth](https://github.com/tymondesigns/jwt-auth)
+## Official Documentation
 
-# Installation
+Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
 
-    $ composer create-project jaesung2061/anvel
-    $ cd anvel
-    $ npm install -g webpack
-    $ npm install
-    $ webpack
-    $ php artisan serve
+## Security Vulnerabilities
 
-> **Note**: If you are on Windows, you must manually copy `node_modules/bootstrap/scss` to `angular/styles` and rename the `scss` directory to `bootstrap`.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-Go to [http://localhost:8000](http://localhost:8000).
+## License
 
-Visit http://anvel.io for some brief documentation.
-
-# Why not Laravel?
-
-Since we will be using a client-side framework, the server will act only as a REST-API.
-With such a setup, it is not necessary to have a full-fledged framework like Laravel.
-Lumen is a lighter framework that still offers the best that Laravel has to offer such
-as the IoC container, Facades, and Eloquent.
+The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
