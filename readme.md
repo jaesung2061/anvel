@@ -9,7 +9,7 @@ npm i -g angular-cli
 composer create-project jaesung2061/anvel
 cd anvel
 npm install
-ng build
+ng build --watch
 php -S localhost:8000 -t public
 ```
 
