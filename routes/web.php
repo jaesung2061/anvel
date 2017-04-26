@@ -29,4 +29,4 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function (Dingo\Api
     // $api->resource('users', 'UsersController');
 });
 
-$app->get('{slug:.*}', 'AngularController@serve');
+$app->get('/', 'AngularController@serve');
