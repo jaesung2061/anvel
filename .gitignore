@@ -5,6 +5,7 @@ Homestead.yaml
 
 # compiled output
 /public/*.js
+/public/*.js.map
 /public/index.html
 /tmp
 /out-tsc
