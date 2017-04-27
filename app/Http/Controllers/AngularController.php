@@ -19,6 +19,6 @@ class AngularController extends Controller
 //            'API_VERSION'        => env('API_VERSION')
 //        ]);
 
-        return \File::get(public_path('index.html'));
+        return file_get_contents(public_path('index.html'));
     }
 }
