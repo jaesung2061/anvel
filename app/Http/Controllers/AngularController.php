@@ -11,6 +11,6 @@ class AngularController extends Controller
      */
     public function serve()
     {
-        return file_get_contents(base_path('public/dist/index.html'));
+        return file_get_contents(base_path('public/index.html'));
     }
 }

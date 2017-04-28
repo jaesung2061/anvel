@@ -6,9 +6,12 @@
   "apps": [
     {
       "root": "angular",
-      "outDir": "public/dist",
+      "outDir": "public",
       "assets": [
-        "assets"
+        "assets",
+        ".htaccess",
+        "favicon.ico",
+        "index.php"
       ],
       "index": "index.html",
       "main": "main.ts",
