@@ -1,6 +1,6 @@
 # Configured Lumen and Angular 2 starter kit
 
-Integrated with [angular-cli](https://github.com/angular/angular-cli).
+Integrated with [angular-cli](https://github.com/angular/angular-cli). Uses [Angular Material](https://github.com/angular/material2)
 
 ## Installation
 
