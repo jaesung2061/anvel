@@ -4,7 +4,7 @@ Homestead.yaml
 .env
 
 # compiled output
-/public
+/public/dist
 /tmp
 /out-tsc
 

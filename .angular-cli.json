@@ -6,15 +6,14 @@
   "apps": [
     {
       "root": "angular",
-      "outDir": "public",
+      "outDir": "public/dist",
       "assets": [
         "assets",
-        ".htaccess",
-        "favicon.ico",
-        "index.php"
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
+      "deployUrl": "/dist/",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
