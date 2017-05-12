@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use File;
+
 class AngularController extends Controller
 {
     /**
@@ -11,6 +13,6 @@ class AngularController extends Controller
      */
     public function serve()
     {
-        return file_get_contents(base_path('public/index.html'));
+        return File::get(public_path('dist/index.html'));
     }
 }

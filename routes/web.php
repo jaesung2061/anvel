@@ -2,20 +2,14 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-/* @var $api Dingo\Api\Routing\Router */
-$api = app('Dingo\Api\Routing\Router');
+Route::get('/', 'AngularController@serve');
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers'], function (Dingo\Api\Routing\Router $api) {
-    // All routes in this callback is prefixed by "/api"
-});
-
-$app->get('/', 'AngularController@serve');
