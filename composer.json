@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Laravel. Angular. Integrated",
+    "keywords": ["framework", "laravel", "angular"],
     "license": "MIT",
     "type": "project",
     "require": {
