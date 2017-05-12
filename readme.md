@@ -10,7 +10,7 @@ composer create-project jaesung2061/anvel
 cd anvel
 npm install
 ng build
-php -S localhost:8000 -t public
+php artisan serve
 ```
 
 Go to http://localhost:8000
