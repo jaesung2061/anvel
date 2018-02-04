@@ -10,6 +10,10 @@ composer create-project jaesung2061/anvel
 cd anvel
 npm install
 ng build
+```
+create a .env file
+
+```
 php artisan key:generate
 php artisan serve
 ```
